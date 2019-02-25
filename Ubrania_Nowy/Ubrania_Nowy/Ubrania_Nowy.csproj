@@ -64,15 +64,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="addClothesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="addClothesWindow.xaml.cs">
+      <DependentUpon>addClothesWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ERP.cs" />
+    <Compile Include="ERPDbContext.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -86,6 +94,10 @@
     <Compile Include="Migrations\201902251230124_CreateCloth.cs" />
     <Compile Include="Migrations\201902251230124_CreateCloth.Designer.cs">
       <DependentUpon>201902251230124_CreateCloth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902252044591_ClothUpdate.cs" />
+    <Compile Include="Migrations\201902252044591_ClothUpdate.Designer.cs">
+      <DependentUpon>201902252044591_ClothUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -107,19 +119,25 @@
     <EmbeddedResource Include="Migrations\201902251230124_CreateCloth.resx">
       <DependentUpon>201902251230124_CreateCloth.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902252044591_ClothUpdate.resx">
+      <DependentUpon>201902252044591_ClothUpdate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Agreement.datasource" />
+    <None Include="Properties\DataSources\Cloth.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

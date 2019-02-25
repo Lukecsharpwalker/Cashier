@@ -29,12 +29,8 @@ namespace Ubrania_Nowy
         public string Description { get; set; }
         public int Price { get; set; }
         public int Price_RL { get; set; }
+        public int Agreement_Id { get; set; }
         public Agreement Agreement { get; set; }
     }
-       
-    public class ERPDbContext : DbContext
-    {
-        public DbSet<Agreement> Agreements { get; set; }
-        public DbSet<Cloth> Clothes { get; set; }
-    }
+      
 }

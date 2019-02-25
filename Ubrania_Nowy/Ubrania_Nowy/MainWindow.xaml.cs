@@ -103,7 +103,11 @@ namespace Ubrania_Nowy
 
         private void addClothes_btn_Click(object sender, RoutedEventArgs e)
         {
+            Agreement agreement = agreementDataGrid.SelectedItem as Agreement;
+            int passId = agreement.Id;
 
+            var addclotheswindow = new addClothesWindow(passId);
+            addclotheswindow.Show();
         }
     }
 }
