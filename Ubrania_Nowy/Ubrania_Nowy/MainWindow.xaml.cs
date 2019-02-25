@@ -23,7 +23,7 @@ namespace Ubrania_Nowy
     public partial class MainWindow : Window
     {
         private ERPDbContext _context = new ERPDbContext();
-        
+        int id_temp;
 
         public MainWindow()
         {
@@ -47,9 +47,9 @@ namespace Ubrania_Nowy
         }
 
         private void add_btn_Click(object sender, RoutedEventArgs e)
-        {
-            // var agrements = _context.Agreements.ToList();
+        {           
             Agreement agreement = new Agreement();
+
             agreement.Name = name_txt.Text;
             agreement.Surname = surname_txt.Text;
             agreement.Pesel = Convert.ToInt32(pesel_txt.Text);
@@ -61,6 +61,49 @@ namespace Ubrania_Nowy
             agreementDataGrid.ItemsSource = _context.Agreements.ToList();
         }
 
+        private void edit_btn_Click(object sender, RoutedEventArgs e)
+        {
+         
+            Agreement agreement = agreementDataGrid.SelectedItem as Agreement;
+            Agreement updateAgreement = _context.Agreements.Where(i => i.Id == agreement.Id).FirstOrDefault();
+            updateAgreement.Name = name_txt.Text;
+            agreement.Surname = surname_txt.Text;
+            agreement.Pesel = Convert.ToInt32(pesel_txt.Text);
+            agreement.Tel = Convert.ToInt32(tel_txt.Text);
+            agreement.End = DateTime.Now.Date;
+            _context.SaveChanges();
+            agreementDataGrid.ItemsSource = _context.Agreements.ToList();
+        }
 
+        private void remove_btn_Click(object sender, RoutedEventArgs e)
+        {
+          
+            Agreement deleteAgreement;
+            Agreement agreement = agreementDataGrid.SelectedItem as Agreement;
+            deleteAgreement = _context.Agreements.Find(agreement.Id);
+            _context.Agreements.Attach(deleteAgreement);
+            _context.Agreements.Remove(deleteAgreement);
+            _context.SaveChanges();
+            agreementDataGrid.ItemsSource = _context.Agreements.ToList();
+
+        }
+
+        private void load_btn_Click(object sender, RoutedEventArgs e)
+        {
+            
+            Agreement agreement = agreementDataGrid.SelectedItem as Agreement;
+
+            name_txt.Text = agreement.Name;
+            surname_txt.Text = agreement.Surname;
+            pesel_txt.Text = Convert.ToString(agreement.Pesel);
+            tel_txt.Text = Convert.ToString(agreement.Tel);
+            id_temp = agreement.Id;
+
+        }
+
+        private void addClothes_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
