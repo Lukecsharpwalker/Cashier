@@ -1,0 +1,29 @@
+﻿<Window x:Class="Ubrania_Nowy.CheckAgreementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ubrania_Nowy"
+        mc:Ignorable="d"
+        Title="CheckAgreementWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="clothViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Cloth}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource clothViewSource}">
+        <DataGrid x:Name="clothDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="325,78,67,141" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="agreement_IdColumn" Binding="{Binding Agreement_Id}" Header="Agreement Id" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="colourColumn" Binding="{Binding Colour}" Header="Colour" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="descriptionColumn" Binding="{Binding Description}" Header="Description" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="markColumn" Binding="{Binding Mark}" Header="Mark" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="priceColumn" Binding="{Binding Price}" Header="Price" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="price_RLColumn" Binding="{Binding Price_RL}" Header="Price RL" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="sizeColumn" Binding="{Binding Size}" Header="Size" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="typeColumn" Binding="{Binding Type}" Header="Type" Width="SizeToHeader"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="CloseAgreement_btn" Content="Rozlicz Umowe" HorizontalAlignment="Left" Margin="48,81,0,0" VerticalAlignment="Top" Width="109"/>
+
+    </Grid>
+</Window>

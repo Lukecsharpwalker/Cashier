@@ -109,5 +109,13 @@ namespace Ubrania_Nowy
             var addclotheswindow = new addClothesWindow(passId);
             addclotheswindow.Show();
         }
+
+        private void CheckAgreement_btn_Click(object sender, RoutedEventArgs e)
+        {
+            int passId;
+            passId = Convert.ToInt32(CheckAgreementId_txt.Text);
+            var CheckAgreementWindow = new CheckAgreementWindow(passId);
+            CheckAgreementWindow.Show();
+        }
     }
 }

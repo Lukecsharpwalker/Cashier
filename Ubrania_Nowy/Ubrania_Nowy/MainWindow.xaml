@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ubrania_Nowy"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="879" Loaded="Window_Loaded">
+        Title="MainWindow" Height="450" Width="1240.765" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="agreementViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Agreement}, CreateList=True}"/>
     </Window.Resources>
@@ -18,7 +18,7 @@
             <RowDefinition Height="155*"/>
             <RowDefinition Height="264*"/>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="agreementDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="213,23,10,117" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.RowSpan="2" Grid.Column="1">
+        <DataGrid x:Name="agreementDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="213,23,461,117" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.RowSpan="2" Grid.Column="1">
             <DataGrid.Columns>
                 <DataGridTemplateColumn x:Name="beginColumn" Header="Begin" Width="SizeToHeader">
                     <DataGridTemplateColumn.CellTemplate>
@@ -54,6 +54,8 @@
         <Button x:Name="remove_btn" Content="Usun" HorizontalAlignment="Left" Margin="42,127,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="remove_btn_Click" Grid.Column="1"/>
         <Button x:Name="load_btn" Content="&lt;" HorizontalAlignment="Left" Margin="134,0,0,0" VerticalAlignment="Top" Width="58" Height="23" Grid.Row="1" Click="load_btn_Click" Grid.Column="1"/>
         <Button x:Name="addClothes_btn" Content="Dodaj Ubrania" HorizontalAlignment="Left" Margin="25,199,0,0" Grid.Row="1" VerticalAlignment="Top" Width="98" Click="addClothes_btn_Click"/>
+        <Button x:Name="CheckAgreement_btn" Content="Sprawdź Umowę" HorizontalAlignment="Left" Margin="729,37,0,0" VerticalAlignment="Top" Width="98" Grid.Column="1" Click="CheckAgreement_btn_Click"/>
+        <TextBox x:Name="CheckAgreementId_txt" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="585,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>
