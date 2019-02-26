@@ -38,11 +38,12 @@ namespace Ubrania_Nowy
             // clothViewSource.Źródło = [ogólne źródło danych]
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void addCloth_btn_Click(object sender, RoutedEventArgs e)
         {
          //   MessageBox.Show("" + passId);
 
             Cloth cloth = new Cloth();
+
             cloth.Agreement_Id = passId;
             cloth.Mark = mark_txt.Text;
             cloth.Size = size_txt.Text;
@@ -50,9 +51,52 @@ namespace Ubrania_Nowy
             cloth.Type = type_txt.Text;
             cloth.Description = description_txt.Text;
             cloth.Price = Convert.ToInt32(price_txt.Text);
+
             _context.Clothes.Add(cloth);
             _context.SaveChanges();
             clothDataGrid.ItemsSource = _context.Clothes.ToList();
         }
+
+        private void load_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Cloth cloth = clothDataGrid.SelectedItem as Cloth;
+
+            mark_txt.Text = cloth.Mark;
+            size_txt.Text = cloth.Size;
+            colour_txt.Text = cloth.Colour;
+            type_txt.Text = cloth.Type;
+            description_txt.Text = cloth.Description;
+            price_txt.Text = Convert.ToString(cloth.Price);
+        }
+        private void editCloth_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Cloth cloth = clothDataGrid.SelectedItem as Cloth;
+            Cloth updateCloth = _context.Clothes.Where(i => i.Id == cloth.Id).FirstOrDefault();
+            
+            cloth.Agreement_Id = passId;
+            cloth.Mark = mark_txt.Text;
+            cloth.Size = size_txt.Text;
+            cloth.Colour = colour_txt.Text;
+            cloth.Type = type_txt.Text;
+            cloth.Description = description_txt.Text;
+            cloth.Price = Convert.ToInt32(price_txt.Text);
+
+            _context.SaveChanges();
+            clothDataGrid.ItemsSource = _context.Clothes.ToList();
+
+        }
+
+        private void deleteCloth_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Cloth deleteCloth;
+            Cloth cloth = clothDataGrid.SelectedItem as Cloth;
+            deleteCloth = _context.Clothes.Find(cloth.Id);
+            _context.Clothes.Attach(deleteCloth);
+            _context.Clothes.Remove(deleteCloth);
+            _context.SaveChanges();
+            clothDataGrid.ItemsSource = _context.Clothes.ToList();
+        }
+
+        
     }
 }

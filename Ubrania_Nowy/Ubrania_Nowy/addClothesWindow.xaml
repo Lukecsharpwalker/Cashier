@@ -10,9 +10,7 @@
         <CollectionViewSource x:Key="clothViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Cloth}, CreateList=True}"/>
     </Window.Resources>
     <Grid DataContext="{StaticResource clothViewSource}" Margin="0,0,-262,0">
-        <Button Content="Dodaj Ubranie" HorizontalAlignment="Left" Margin="28,330,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click"/>
-        <Button Content="Edytuj Ubranie" HorizontalAlignment="Left" Margin="148,330,0,0" VerticalAlignment="Top" Width="95"/>
-        <Button Content="Usuń" HorizontalAlignment="Left" Margin="269,330,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="addCloth_btn" Content="Dodaj Ubranie" HorizontalAlignment="Left" Margin="28,330,0,0" VerticalAlignment="Top" Width="100" Click="addCloth_btn_Click"/>
         <DataGrid x:Name="clothDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="389,82,366,123" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="colourColumn" Binding="{Binding Colour}" Header="Colour" Width="SizeToHeader"/>
@@ -23,7 +21,7 @@
                 <DataGridTextColumn x:Name="price_RLColumn" Binding="{Binding Price_RL}" Header="Price RL" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="sizeColumn" Binding="{Binding Size}" Header="Size" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="typeColumn" Binding="{Binding Type}" Header="Type" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="AgreColumn" Binding="{Binding AgreementId}" Header="AID" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="AgreColumn" Binding="{Binding Agreement_Id}" Header="AID" Width="SizeToHeader"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Marka" HorizontalAlignment="Left" Margin="65,97,0,0" VerticalAlignment="Top"/>
@@ -38,6 +36,9 @@
         <TextBox x:Name="price_txt" HorizontalAlignment="Left" Height="23" Margin="165,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Opis" HorizontalAlignment="Left" Margin="65,247,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="description_txt" HorizontalAlignment="Left" Height="23" Margin="165,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="load_btn" Content="&lt;" HorizontalAlignment="Left" Margin="305,172,0,0" VerticalAlignment="Top" Width="58" Height="23" Click="load_btn_Click"/>
+        <Button x:Name="editCloth_btn" Content="Edytuj Ubranie" HorizontalAlignment="Left" Margin="152,330,0,0" VerticalAlignment="Top" Width="85" Click="editCloth_btn_Click"/>
+        <Button x:Name="deleteCloth_btn" Content="Usuń " HorizontalAlignment="Left" Margin="259,330,0,0" VerticalAlignment="Top" Width="75" Click="deleteCloth_btn_Click"/>
 
     </Grid>
 </Window>
