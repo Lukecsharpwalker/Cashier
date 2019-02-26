@@ -36,5 +36,14 @@ namespace Ubrania_Nowy
             // Załaduj dane poprzez ustawienie właściwości CollectionViewSource.Source:
             // clothViewSource.Źródło = [ogólne źródło danych]
         }
+
+        private void CloseAgreement_btn_Click(object sender, RoutedEventArgs e)
+        {
+            int temp=0;
+            var cloth = _context.Clothes.ToList().Where(i => i.Agreement_Id == passId);
+            foreach (var price in cloth)
+                temp = temp +price.Price;
+            MessageBox.Show("" + temp);
+        }
     }
 }

@@ -68,6 +68,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CashierWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CheckAgreementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -82,6 +86,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CashierWindow.xaml.cs">
+      <DependentUpon>CashierWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="CheckAgreementWindow.xaml.cs">
       <DependentUpon>CheckAgreementWindow.xaml</DependentUpon>
@@ -106,6 +113,10 @@
     <Compile Include="Migrations\201902252044591_ClothUpdate.Designer.cs">
       <DependentUpon>201902252044591_ClothUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902262005202_SoldAddedCloths.cs" />
+    <Compile Include="Migrations\201902262005202_SoldAddedCloths.Designer.cs">
+      <DependentUpon>201902262005202_SoldAddedCloths.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -128,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902252044591_ClothUpdate.resx">
       <DependentUpon>201902252044591_ClothUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902262005202_SoldAddedCloths.resx">
+      <DependentUpon>201902262005202_SoldAddedCloths.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

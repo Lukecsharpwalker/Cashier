@@ -23,7 +23,7 @@
                 <DataGridTextColumn x:Name="typeColumn" Binding="{Binding Type}" Header="Type" Width="SizeToHeader"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="CloseAgreement_btn" Content="Rozlicz Umowe" HorizontalAlignment="Left" Margin="48,81,0,0" VerticalAlignment="Top" Width="109"/>
+        <Button x:Name="CloseAgreement_btn" Content="Rozlicz Umowe" HorizontalAlignment="Left" Margin="48,81,0,0" VerticalAlignment="Top" Width="109" Click="CloseAgreement_btn_Click"/>
 
     </Grid>
 </Window>

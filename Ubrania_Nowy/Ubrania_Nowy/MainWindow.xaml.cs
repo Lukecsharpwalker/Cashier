@@ -117,5 +117,11 @@ namespace Ubrania_Nowy
             var CheckAgreementWindow = new CheckAgreementWindow(passId);
             CheckAgreementWindow.Show();
         }
+
+        private void Cashier_btn_Click(object sender, RoutedEventArgs e)
+        {
+            CashierWindow cashierWindow = new CashierWindow();
+            cashierWindow.Show();
+        }
     }
 }

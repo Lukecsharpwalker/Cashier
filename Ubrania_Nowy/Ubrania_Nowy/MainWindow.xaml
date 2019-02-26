@@ -56,6 +56,7 @@
         <Button x:Name="addClothes_btn" Content="Dodaj Ubrania" HorizontalAlignment="Left" Margin="25,199,0,0" Grid.Row="1" VerticalAlignment="Top" Width="98" Click="addClothes_btn_Click"/>
         <Button x:Name="CheckAgreement_btn" Content="Sprawdź Umowę" HorizontalAlignment="Left" Margin="729,37,0,0" VerticalAlignment="Top" Width="98" Grid.Column="1" Click="CheckAgreement_btn_Click"/>
         <TextBox x:Name="CheckAgreementId_txt" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="585,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="Cashier_btn" Content="Kasjer" Grid.Column="1" HorizontalAlignment="Left" Margin="236,180,0,0" Grid.Row="1" VerticalAlignment="Top" Width="176" Click="Cashier_btn_Click"/>
 
     </Grid>
 </Window>

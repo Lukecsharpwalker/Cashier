@@ -22,6 +22,7 @@
                 <DataGridTextColumn x:Name="sizeColumn" Binding="{Binding Size}" Header="Size" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="typeColumn" Binding="{Binding Type}" Header="Type" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="AgreColumn" Binding="{Binding Agreement_Id}" Header="AID" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="SoldColumn" Binding="{Binding Sold}" Header="Sold" Width="SizeToHeader"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Marka" HorizontalAlignment="Left" Margin="65,97,0,0" VerticalAlignment="Top"/>

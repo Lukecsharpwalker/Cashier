@@ -30,6 +30,7 @@ namespace Ubrania_Nowy
         public int Price { get; set; }
         public int Price_RL { get; set; }
         public int Agreement_Id { get; set; }
+        public bool Sold { get; set; }
         public Agreement Agreement { get; set; }
     }
       
