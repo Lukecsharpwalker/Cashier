@@ -7,8 +7,11 @@
         mc:Ignorable="d"
         Title="CashierWindow" Height="450" Width="800">
     <Grid>
-        <TextBox x:Name="scaner_txt" HorizontalAlignment="Left" Height="23" Margin="266,110,0,0" TextWrapping="Wrap" Text="scaner" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="price_txt" HorizontalAlignment="Left" Height="23" Margin="266,179,0,0" TextWrapping="Wrap" Text="price&#xD;&#xA;z" VerticalAlignment="Top" Width="120"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="price_txt"  HorizontalAlignment="Left" Height="23" Margin="266,179,0,0" TextWrapping="Wrap" Text="price&#xD;&#xA;z" VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="Scaner_txt" KeyDown="OnKeyDownHandler" HorizontalAlignment="Left" Height="23" Margin="266,140,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>
