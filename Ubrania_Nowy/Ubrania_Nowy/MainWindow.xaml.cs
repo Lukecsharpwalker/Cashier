@@ -103,7 +103,8 @@ namespace Ubrania_Nowy
 
         private void addClothes_btn_Click(object sender, RoutedEventArgs e)
         {
-            Agreement agreement = agreementDataGrid.SelectedItem as Agreement;
+            Agreement agreement = (Agreement)agreementDataGrid.SelectedItem;
+            // Agreement agreement = agreementDataGrid.SelectedItem as Agreement;
             int passId = agreement.Id;
 
             var addclotheswindow = new addClothesWindow(passId);
@@ -128,6 +129,12 @@ namespace Ubrania_Nowy
         {
             Warehouse warehouse = new Warehouse();
             warehouse.Show();
+        }
+
+        private void Return_btn_Click(object sender, RoutedEventArgs e)
+        {
+            ReturnsWindow returnsWindow = new ReturnsWindow();
+            returnsWindow.Show();
         }
     }
 }

@@ -37,8 +37,8 @@ namespace Ubrania_Nowy
             if (e.Key == Key.Return)
             {
                 int temp = Convert.ToInt32(Scaner_txt.Text);
-                Cloth cloth = _context.Clothes.Where(i => i.Id == temp).FirstOrDefault();
-
+                // Cloth cloth = _context.Clothes.Where(i => i.Id == temp).FirstOrDefault();
+                Cloth cloth = _context.Clothes.FirstOrDefault(i => i.Id == temp);
                 if (cloth.Sold == false)
                 { cloth.Sold = true; }
                 temp2 = temp2 + cloth.Price;

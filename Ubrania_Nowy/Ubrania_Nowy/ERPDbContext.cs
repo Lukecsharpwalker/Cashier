@@ -19,8 +19,7 @@ namespace Ubrania_Nowy
                 
                 .HasMany(a => a.Clothes)
                 .WithRequired(c => c.Agreement)
-                .HasForeignKey(c => c.Agreement_Id);
-                
+                .HasForeignKey(c => c.Agreement_Id);              
                 
         }
     }
