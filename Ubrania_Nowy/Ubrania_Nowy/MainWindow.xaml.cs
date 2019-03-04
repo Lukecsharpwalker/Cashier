@@ -123,5 +123,11 @@ namespace Ubrania_Nowy
             CashierWindow cashierWindow = new CashierWindow();
             cashierWindow.Show();
         }
+
+        private void Warehouse_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Warehouse warehouse = new Warehouse();
+            warehouse.Show();
+        }
     }
 }
