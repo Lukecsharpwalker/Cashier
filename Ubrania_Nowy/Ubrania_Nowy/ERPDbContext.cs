@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +20,7 @@ namespace Ubrania_Nowy
                 .HasMany(a => a.Clothes)
                 .WithRequired(c => c.Agreement)
                 .HasForeignKey(c => c.Agreement_Id);
+                // unikaj takich przerw w tekscie
                 
                 
         }

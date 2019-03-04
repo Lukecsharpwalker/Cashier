@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +20,7 @@ namespace Ubrania_Nowy
     public partial class CheckAgreementWindow : Window
     {
         private ERPDbContext _context = new ERPDbContext();
+        // staraj się pisać zawsze modyfiaktor zmiennej (nawet jesli domyslnie jest to private) i '_' przed nazwa KONWENCJA NAZEWNCICTWA!
         int passId;
         public CheckAgreementWindow(int id)
         {
@@ -30,8 +31,9 @@ namespace Ubrania_Nowy
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
-            System.Windows.Data.CollectionViewSource clothViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("clothViewSource")));          
+// uzywając metody jak FindResource stara się  wywoływać ją w bloku try/catch/finnally aby zapobiec  crashowi aplikacji
+            System.Windows.Data.CollectionViewSource clothViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("clothViewSource"))); 
+            // nie musisz parsować do listy przed używaniem linq -> linq działa ze wszystkimi IEnumerable        
             clothDataGrid.ItemsSource = _context.Clothes.ToList().Where(i => i.Agreement_Id == passId);
             // Załaduj dane poprzez ustawienie właściwości CollectionViewSource.Source:
             // clothViewSource.Źródło = [ogólne źródło danych]
@@ -39,9 +41,13 @@ namespace Ubrania_Nowy
 
         private void CloseAgreement_btn_Click(object sender, RoutedEventArgs e)
         {
+            // nazywaj zienne tak aby było wiadomo co to robi i po co;
             int temp=0;
+            // nie musisz parsować do listy przed używaniem linq -> linq działa ze wszystkimi IEnumerable   
+            // staraj się nazywać rzeczy po imieniu zamiast używać var
             var cloth = _context.Clothes.ToList().Where(i => i.Agreement_Id == passId);
             foreach (var price in cloth)
+            // temp += price.Price
                 temp = temp +price.Price;
             MessageBox.Show("" + temp);
         }

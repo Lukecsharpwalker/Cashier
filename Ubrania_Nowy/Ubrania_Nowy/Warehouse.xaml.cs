@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +27,7 @@ namespace Ubrania_Nowy
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+// juz wczedniej o tym pisalem
             System.Windows.Data.CollectionViewSource clothViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("clothViewSource")));
            // clothDataGrid.ItemsSource = _context.Clothes.ToList();
             // Załaduj dane poprzez ustawienie właściwości CollectionViewSource.Source:
@@ -36,6 +36,8 @@ namespace Ubrania_Nowy
 
         private void Search_btn_Click(object sender, RoutedEventArgs e)
         {
+// juz wczedniej o tym pisalem
+
             string type_temp, size_temp;
             type_temp = Type_txt.Text;
             size_temp = Size_txt.Text;

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +18,7 @@ namespace Ubrania_Nowy
         public DateTime End { get; set; }
         public IList<Cloth> Clothes { get; set; }
     }
+    // stgaraj sie miec 1 klase w jendym pliku
     public class Cloth
     {
 

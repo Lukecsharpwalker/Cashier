@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +21,7 @@ namespace Ubrania_Nowy
     {
         
         private ERPDbContext _context = new ERPDbContext();
+        // wczeesniej o tym pisalem
         int passId;
         public addClothesWindow(int id)
         {
@@ -31,7 +32,7 @@ namespace Ubrania_Nowy
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+        // wczeesniej o tym pisalem
             System.Windows.Data.CollectionViewSource clothViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("clothViewSource")));
             clothDataGrid.ItemsSource = _context.Clothes.ToList();
             // Załaduj dane poprzez ustawienie właściwości CollectionViewSource.Source:
@@ -43,7 +44,7 @@ namespace Ubrania_Nowy
          //   MessageBox.Show("" + passId);
 
             Cloth cloth = new Cloth();
-
+        // wczeesniej o tym pisalem
             cloth.Agreement_Id = passId;
             cloth.Mark = mark_txt.Text;
             cloth.Size = size_txt.Text;
@@ -51,7 +52,7 @@ namespace Ubrania_Nowy
             cloth.Type = type_txt.Text;
             cloth.Description = description_txt.Text;
             cloth.Price = Convert.ToInt32(price_txt.Text);
-
+        // wczeesniej o tym pisalem
             _context.Clothes.Add(cloth);
             _context.SaveChanges();
             clothDataGrid.ItemsSource = _context.Clothes.ToList();
@@ -60,7 +61,7 @@ namespace Ubrania_Nowy
         private void load_btn_Click(object sender, RoutedEventArgs e)
         {
             Cloth cloth = clothDataGrid.SelectedItem as Cloth;
-
+        // wczeesniej o tym pisalem
             mark_txt.Text = cloth.Mark;
             size_txt.Text = cloth.Size;
             colour_txt.Text = cloth.Colour;
@@ -71,8 +72,9 @@ namespace Ubrania_Nowy
         private void editCloth_btn_Click(object sender, RoutedEventArgs e)
         {
             Cloth cloth = clothDataGrid.SelectedItem as Cloth;
+                    // wczeesniej o tym pisalem
             Cloth updateCloth = _context.Clothes.Where(i => i.Id == cloth.Id).FirstOrDefault();
-            
+                    // wczeesniej o tym pisalem
             cloth.Agreement_Id = passId;
             cloth.Mark = mark_txt.Text;
             cloth.Size = size_txt.Text;
@@ -88,6 +90,7 @@ namespace Ubrania_Nowy
 
         private void deleteCloth_btn_Click(object sender, RoutedEventArgs e)
         {
+                    // wczeesniej o tym pisalem
             Cloth deleteCloth;
             Cloth cloth = clothDataGrid.SelectedItem as Cloth;
             deleteCloth = _context.Clothes.Find(cloth.Id);
