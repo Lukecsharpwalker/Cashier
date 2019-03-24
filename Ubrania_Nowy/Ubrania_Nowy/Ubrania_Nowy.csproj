@@ -41,6 +41,15 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.pdfa, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itextsharp.pdfa.5.5.13\lib\itextsharp.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itextsharp.xmlworker.5.5.13\lib\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -64,6 +73,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Migrations\201903241416383_PeselIntToDouble.cs" />
+    <Compile Include="Migrations\201903241416383_PeselIntToDouble.Designer.cs">
+      <DependentUpon>201903241416383_PeselIntToDouble.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903241418557_TelephoneIntToDouble.cs" />
+    <Compile Include="Migrations\201903241418557_TelephoneIntToDouble.Designer.cs">
+      <DependentUpon>201903241418557_TelephoneIntToDouble.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReturnsWindow.xaml.cs">
       <DependentUpon>ReturnsWindow.xaml</DependentUpon>
     </Compile>
@@ -156,6 +173,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902262005202_SoldAddedCloths.resx">
       <DependentUpon>201902262005202_SoldAddedCloths.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903241416383_PeselIntToDouble.resx">
+      <DependentUpon>201903241416383_PeselIntToDouble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903241418557_TelephoneIntToDouble.resx">
+      <DependentUpon>201903241418557_TelephoneIntToDouble.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -35,19 +35,19 @@ namespace Ubrania_Nowy
         }
 
         private void Load_Btn_Click(object sender, RoutedEventArgs e)
-        {/* 
+        {
             Cloth cloth = clothDataGrid.SelectedItem as Cloth;
             Sold_box.IsChecked = Convert.ToBoolean(cloth.Sold);
-            clothDataGrid.ItemsSource = _context.Clothes.ToList();  */
+            clothDataGrid.ItemsSource = _context.Clothes.ToList();  
         }
 
         private void Return_Btn_Click(object sender, RoutedEventArgs e)
         {
-           /* Cloth cloth = (Cloth)clothDataGrid.SelectedItem; //agreementDataGrid.SelectedItem as Agreement;
+            Cloth cloth = (Cloth)clothDataGrid.SelectedItem; //agreementDataGrid.SelectedItem as Agreement;
             Cloth updateCloth = _context.Clothes.FirstOrDefault(i => i.Id == cloth.Id);
             cloth.Sold = (bool)Sold_box.IsChecked;
             _context.SaveChanges();
-            clothDataGrid.ItemsSource = _context.Clothes.ToList(); */
+            clothDataGrid.ItemsSource = _context.Clothes.ToList(); 
         }
     }
 }

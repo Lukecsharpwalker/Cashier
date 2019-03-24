@@ -10,8 +10,10 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="price_txt"  HorizontalAlignment="Left" Height="23" Margin="266,179,0,0" TextWrapping="Wrap" Text="price&#xD;&#xA;z" VerticalAlignment="Top" Width="120" />
-        <TextBox x:Name="Scaner_txt" KeyDown="OnKeyDownHandler" HorizontalAlignment="Left" Height="23" Margin="266,140,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="price_txt"  HorizontalAlignment="Left" Height="23" Margin="266,184,0,0" TextWrapping="Wrap" Text="&#xA;z" VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="Scaner_txt" KeyDown="OnKeyDownHandler" HorizontalAlignment="Left" Height="23" Margin="266,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Kod" HorizontalAlignment="Left" Margin="178,137,0,0" VerticalAlignment="Top" Width="68"/>
+        <Label Content="Cena" HorizontalAlignment="Left" Margin="178,184,0,0" VerticalAlignment="Top" Width="68"/>
 
     </Grid>
 </Window>

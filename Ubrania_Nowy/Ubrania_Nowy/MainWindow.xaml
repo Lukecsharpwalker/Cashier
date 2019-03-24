@@ -68,6 +68,7 @@
             </Button.RenderTransform>
         </Button>
         <Button x:Name="Return_btn" Content="Zwroty" Grid.Column="1" HorizontalAlignment="Left" Margin="649,180,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="Return_btn_Click"/>
+        <Button x:Name="Print_Btn" Content="Drukuj Umowe" Grid.Column="1" HorizontalAlignment="Left" Margin="729,82,0,0" VerticalAlignment="Top" Width="98" Click="Print_Btn_Click"/>
 
     </Grid>
 </Window>
