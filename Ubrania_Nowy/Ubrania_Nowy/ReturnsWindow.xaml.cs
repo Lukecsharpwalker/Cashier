@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Reflection;
 
 namespace Ubrania_Nowy
 {
@@ -36,18 +37,45 @@ namespace Ubrania_Nowy
 
         private void Load_Btn_Click(object sender, RoutedEventArgs e)
         {
-            Cloth cloth = clothDataGrid.SelectedItem as Cloth;
-            Sold_box.IsChecked = Convert.ToBoolean(cloth.Sold);
-            clothDataGrid.ItemsSource = _context.Clothes.ToList();  
+            try
+            {
+                Cloth cloth = clothDataGrid.SelectedItem as Cloth;
+                Sold_box.IsChecked = Convert.ToBoolean(cloth.Sold);
+                clothDataGrid.ItemsSource = _context.Clothes.ToList();
+            }
+            catch (NullReferenceException nEx)
+            {
+                MessageBox.Show("Zaznacz Element\n\n" + nEx.Message);
+            }
+            catch (InvalidCastException iEx)
+            {
+                MessageBox.Show("Zaznacz Element z wartościami\n\n" + iEx.Message);
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("Coś poszło nie tak");
+            }
         }
 
         private void Return_Btn_Click(object sender, RoutedEventArgs e)
         {
-            Cloth cloth = (Cloth)clothDataGrid.SelectedItem; //agreementDataGrid.SelectedItem as Agreement;
-            Cloth updateCloth = _context.Clothes.FirstOrDefault(i => i.Id == cloth.Id);
-            cloth.Sold = (bool)Sold_box.IsChecked;
-            _context.SaveChanges();
-            clothDataGrid.ItemsSource = _context.Clothes.ToList(); 
+            try
+            {
+                
+                Cloth cloth = (Cloth)clothDataGrid.SelectedItem; //agreementDataGrid.SelectedItem as Agreement;
+               // Cloth updateCloth = _context.Clothes.FirstOrDefault(i => i.Id == cloth.Id);
+                if (cloth.Sold == true)
+                {
+                    cloth.Sold = (bool)Sold_box.IsChecked;
+                    _context.SaveChanges();
+                    clothDataGrid.ItemsSource = _context.Clothes.ToList();
+                }
+            }
+            catch (TargetException tEx)
+            {
+                MessageBox.Show("\nZaznacz Umowę\n\n" + tEx.Message);
+            }
+
         }
     }
 }
