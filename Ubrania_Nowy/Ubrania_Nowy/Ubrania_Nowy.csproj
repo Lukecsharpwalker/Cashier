@@ -81,6 +81,10 @@
     <Compile Include="Migrations\201903241418557_TelephoneIntToDouble.Designer.cs">
       <DependentUpon>201903241418557_TelephoneIntToDouble.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903241625088_NameSurnameIsRequired.cs" />
+    <Compile Include="Migrations\201903241625088_NameSurnameIsRequired.Designer.cs">
+      <DependentUpon>201903241625088_NameSurnameIsRequired.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReturnsWindow.xaml.cs">
       <DependentUpon>ReturnsWindow.xaml</DependentUpon>
     </Compile>
@@ -179,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903241418557_TelephoneIntToDouble.resx">
       <DependentUpon>201903241418557_TelephoneIntToDouble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903241625088_NameSurnameIsRequired.resx">
+      <DependentUpon>201903241625088_NameSurnameIsRequired.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Reflection;
 
 namespace Ubrania_Nowy
 {
@@ -40,61 +41,121 @@ namespace Ubrania_Nowy
 
         private void addCloth_btn_Click(object sender, RoutedEventArgs e)
         {
-         //   MessageBox.Show("" + passId);
+            //   MessageBox.Show("" + passId);
+            try
+            {
+                Cloth cloth = new Cloth();
 
-            Cloth cloth = new Cloth();
+                cloth.Agreement_Id = passId;
+                cloth.Mark = mark_txt.Text;
+                cloth.Size = size_txt.Text;
+                cloth.Colour = colour_txt.Text;
+                cloth.Type = type_txt.Text;
+                cloth.Description = description_txt.Text;
+                cloth.Price = Convert.ToInt32(price_txt.Text);
 
-            cloth.Agreement_Id = passId;
-            cloth.Mark = mark_txt.Text;
-            cloth.Size = size_txt.Text;
-            cloth.Colour = colour_txt.Text;
-            cloth.Type = type_txt.Text;
-            cloth.Description = description_txt.Text;
-            cloth.Price = Convert.ToInt32(price_txt.Text);
-
-            _context.Clothes.Add(cloth);
-            _context.SaveChanges();
-            clothDataGrid.ItemsSource = _context.Clothes.ToList();
+                _context.Clothes.Add(cloth);
+                _context.SaveChanges();
+                clothDataGrid.ItemsSource = _context.Clothes.ToList();
+            }
+            catch (FormatException fEx)
+            {
+                MessageBox.Show(fEx.Message + "\nPodaj wszystkie dane lub\nSprawdź poprawność danych");
+                //MessageBox.Show("Podaj wszystkie dane");
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("Coś poszło nie tak");
+            }
         }
 
         private void load_btn_Click(object sender, RoutedEventArgs e)
         {
-            Cloth cloth = clothDataGrid.SelectedItem as Cloth;
+            try
+            {
+                Cloth cloth = clothDataGrid.SelectedItem as Cloth;
 
-            mark_txt.Text = cloth.Mark;
-            size_txt.Text = cloth.Size;
-            colour_txt.Text = cloth.Colour;
-            type_txt.Text = cloth.Type;
-            description_txt.Text = cloth.Description;
-            price_txt.Text = Convert.ToString(cloth.Price);
+                mark_txt.Text = cloth.Mark;
+                size_txt.Text = cloth.Size;
+                colour_txt.Text = cloth.Colour;
+                type_txt.Text = cloth.Type;
+                description_txt.Text = cloth.Description;
+                price_txt.Text = Convert.ToString(cloth.Price);
+            }
+            catch (NullReferenceException nEx)
+            {
+                MessageBox.Show("Zaznacz Element\n\n" + nEx.Message);
+            }
+            catch (InvalidCastException iEx)
+            {
+                MessageBox.Show("Zaznacz Element z wartościami\n\n" + iEx.Message);
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("Coś poszło nie tak");
+            }
         }
         private void editCloth_btn_Click(object sender, RoutedEventArgs e)
         {
-            Cloth cloth = clothDataGrid.SelectedItem as Cloth;
-            Cloth updateCloth = _context.Clothes.Where(i => i.Id == cloth.Id).FirstOrDefault();
-            
-            cloth.Agreement_Id = passId;
-            cloth.Mark = mark_txt.Text;
-            cloth.Size = size_txt.Text;
-            cloth.Colour = colour_txt.Text;
-            cloth.Type = type_txt.Text;
-            cloth.Description = description_txt.Text;
-            cloth.Price = Convert.ToInt32(price_txt.Text);
+            try
+            {
+                Cloth cloth = clothDataGrid.SelectedItem as Cloth;
+                Cloth updateCloth = _context.Clothes.Where(i => i.Id == cloth.Id).FirstOrDefault();
 
-            _context.SaveChanges();
-            clothDataGrid.ItemsSource = _context.Clothes.ToList();
+
+
+                cloth.Price = Int32.Parse(price_txt.Text);
+                cloth.Agreement_Id = passId;
+                cloth.Mark = mark_txt.Text;
+                cloth.Size = size_txt.Text;
+                cloth.Colour = colour_txt.Text;
+                cloth.Type = type_txt.Text;
+                cloth.Description = description_txt.Text;
+                
+
+                _context.SaveChanges();
+                clothDataGrid.ItemsSource = _context.Clothes.ToList();
+            }
+            catch (TargetException tEx)
+            {
+                MessageBox.Show("\nZaznacz Umowę\n\n" + tEx.Message);
+            }
+            catch (FormatException fEx)
+            {
+                MessageBox.Show(fEx.Message + "\nPodaj wszystkie dane lub\nSprawdź poprawność danych");
+                //MessageBox.Show("Podaj wszystkie dane");
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("Coś poszło nie tak");
+            }
+            finally
+            {
+                clothDataGrid.ItemsSource = _context.Clothes.ToList();
+            }
 
         }
 
         private void deleteCloth_btn_Click(object sender, RoutedEventArgs e)
         {
-            Cloth deleteCloth;
-            Cloth cloth = clothDataGrid.SelectedItem as Cloth;
-            deleteCloth = _context.Clothes.Find(cloth.Id);
-            _context.Clothes.Attach(deleteCloth);
-            _context.Clothes.Remove(deleteCloth);
-            _context.SaveChanges();
-            clothDataGrid.ItemsSource = _context.Clothes.ToList();
+            try
+            {
+                Cloth deleteCloth;
+                Cloth cloth = clothDataGrid.SelectedItem as Cloth;
+                deleteCloth = _context.Clothes.Find(cloth.Id);
+                _context.Clothes.Attach(deleteCloth);
+                _context.Clothes.Remove(deleteCloth);
+                _context.SaveChanges();
+                clothDataGrid.ItemsSource = _context.Clothes.ToList();
+            }
+            catch (NullReferenceException nEx)
+            {
+                MessageBox.Show("Zaznacz Element\n\n" + nEx.Message);
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("Coś poszło nie tak");
+            }
         }
 
         

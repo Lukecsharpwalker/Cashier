@@ -80,14 +80,15 @@ namespace Ubrania_Nowy
         {
             try
             {
-                Agreement agreement = agreementDataGrid.SelectedItem as Agreement;
+                Agreement agreement = (Agreement)agreementDataGrid.SelectedItem;
                 // Agreement updateAgreement = _context.Agreements.Where(i => i.Id == agreement.Id).FirstOrDefault();
                 // updateAgreement.Name = name_txt.Text;
-                agreement.Name = name_txt.Text;
-                agreement.Surname = surname_txt.Text;
+                
                 agreement.Pesel = Convert.ToDouble(pesel_txt.Text);
                 agreement.Tel = Convert.ToDouble(tel_txt.Text);
                 agreement.End = DateTime.Now.Date;
+                agreement.Name = name_txt.Text;
+                agreement.Surname = surname_txt.Text;
                 _context.SaveChanges();
                 agreementDataGrid.ItemsSource = _context.Agreements.ToList();
             }
@@ -103,6 +104,10 @@ namespace Ubrania_Nowy
             catch (Exception Ex)
             {
                 MessageBox.Show("Coś poszło nie tak");
+            }
+            finally
+            {
+               agreementDataGrid.ItemsSource = _context.Agreements.ToList();
             }
         }
 
@@ -134,7 +139,14 @@ namespace Ubrania_Nowy
             try
             {
                 Agreement agreement = (Agreement)agreementDataGrid.SelectedItem;
+                //Agreement updateAgreement = _context.Agreements.Where(i => i.Id == agreement.Id).FirstOrDefault();
 
+                //name_txt.Text = updateAgreement.Name;
+                //surname_txt.Text = updateAgreement.Surname;
+                //pesel_txt.Text = Convert.ToString(updateAgreement.Pesel);
+                //tel_txt.Text = Convert.ToString(updateAgreement.Tel);
+                //id_temp = updateAgreement.Id;
+                
                 name_txt.Text = agreement.Name;
                 surname_txt.Text = agreement.Surname;
                 pesel_txt.Text = Convert.ToString(agreement.Pesel);

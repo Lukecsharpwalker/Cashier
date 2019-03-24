@@ -19,8 +19,15 @@ namespace Ubrania_Nowy
                 
                 .HasMany(a => a.Clothes)
                 .WithRequired(c => c.Agreement)
-                .HasForeignKey(c => c.Agreement_Id);              
-                
+                .HasForeignKey(c => c.Agreement_Id);
+
+            modelBuilder.Entity<Agreement>()
+                .Property(a => a.Name)
+                .IsRequired();
+
+            modelBuilder.Entity<Agreement>()
+                .Property(a => a.Surname)
+                .IsRequired();
         }
     }
 
