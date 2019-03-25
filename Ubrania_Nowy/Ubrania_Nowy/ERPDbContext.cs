@@ -28,6 +28,9 @@ namespace Ubrania_Nowy
             modelBuilder.Entity<Agreement>()
                 .Property(a => a.Surname)
                 .IsRequired();
+            modelBuilder.Entity<Agreement>()
+                .Property(a => a.Begin)
+                .IsRequired();
         }
     }
 

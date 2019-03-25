@@ -10,10 +10,13 @@ namespace Ubrania_ASP.NET2.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
+        public DbSet<Agreement> Agreements { get; set; }
+        public DbSet<Cloth> Clothes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
