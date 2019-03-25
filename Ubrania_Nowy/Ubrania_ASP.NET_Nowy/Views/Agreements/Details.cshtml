@@ -3,52 +3,106 @@
 @{
     ViewData["Title"] = "Details";
 }
-
-<h2>Details</h2>
-
-<div>
-    <h4>Agreement</h4>
+<br />
+<h2>Szczegóły</h2>
+<br />
+<div class="form-border">
+    <h4>Umowa nr: @Html.DisplayFor(Model => Model.Id)</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Surname)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Surname)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Tel)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Tel)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Pesel)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Pesel)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Begin)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Begin)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.End)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.End)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <fieldset disabled>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Id" class="custom-label"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Id" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Name" class="custom-label"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Name" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Surname" class="custom-label"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Surname" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Tel" class="custom-label"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Tel" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Begin" class="custom-label"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Begin" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="End" class="custom-label"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="End" class="form-control" />
+            </div>
+        </div>
+
+    </fieldset>
+
+
+    @*<dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Surname)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Surname)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Tel)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Tel)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Pesel)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Pesel)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Begin)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Begin)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.End)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.End)
+            </dd>
+        </dl>*@
+
+    <div class="form-group">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edytuj</a> |
+        <a asp-action="Index" class="btn btn-success">Powrót</a>
+    </div>
 </div>
