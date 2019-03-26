@@ -1,0 +1,132 @@
+﻿@model Ubrania_ASP.NET_Nowy.Models.Cloth
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<br />
+<h2>Szczegóły Przedmiotu</h2>
+<br />
+
+<div>
+    <h4>Cloth</h4>
+    <hr />
+
+    <div class="form-border">
+        <h4>Umowa nr: @Html.DisplayFor(Model => Model.Id)</h4>
+        <hr />
+        <fieldset disabled>
+            <div class="form-group row">
+                <div class="col-2">
+                    Id
+                </div>
+                <div class="col-4">
+                    <input asp-for="Id" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-2">
+                    Imię właściciela
+                </div>
+                <div class="col-4">
+                    <input asp-for="Agreement.Name" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-2">
+                    Nazwisko Właściciela
+                </div>
+                <div class="col-4">
+                    <input asp-for="Agreement.Surname" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-2">
+                    Marka
+                </div>
+                <div class="col-4">
+                    <input asp-for="Mark" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-2">
+                    Rozmiar
+                </div>
+                <div class="col-4">
+                    <input asp-for="Size" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-2">
+                    Kolor
+                </div>
+                <div class="col-4">
+                    <input asp-for="Colour" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-2">
+                    Typ
+                </div>
+                <div class="col-4">
+                    <input asp-for="Type" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-2">
+                    Opis
+                </div>
+                <div class="col-4">
+                    <input asp-for="Description" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-2">
+                    Cena
+                </div>
+                <div class="col-4">
+                    <input asp-for="Price" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-2">
+                    Cena Rzeczywista
+                </div>
+                <div class="col-4">
+                    <input asp-for="Price_RL" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-2">
+                    Sprzedane?
+                </div>
+                <div class="col-4">
+                    <input asp-for="Sold" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-2">
+                    Numer Umowy
+                </div>
+                <div class="col-4">
+                    <input asp-for="Agreement_Id" class="form-control" />
+                </div>
+            </div>
+
+
+
+        </fieldset>
+
+        <div class="form-group">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-success">Edytuj</a> |
+            <a asp-action="Index" class="btn btn-warning">Powrót</a>
+        </div>
+    </div>
