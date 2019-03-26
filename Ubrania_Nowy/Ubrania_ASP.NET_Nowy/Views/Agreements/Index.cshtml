@@ -3,9 +3,9 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h2>Umowy</h2>
-
+<br />
+<h2>Lista Umów</h2>
+<br />
 <p>
     @Html.Partial("_CreateButtonPartial")
 </p>
@@ -17,22 +17,22 @@
                     Numer Umowy
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Name)
+                    Imię
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Surname)
+                    Nazwisko
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Tel)
+                    Nr. Tel
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Pesel)
+                    Pesel
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Begin)
+                    Data Rozpoczęcia
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.End)
+                    Data Końca
                 </th>
                 <th></th>
             </tr>

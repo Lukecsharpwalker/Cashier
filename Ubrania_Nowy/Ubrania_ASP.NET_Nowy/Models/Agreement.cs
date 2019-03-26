@@ -15,7 +15,9 @@ namespace Ubrania_ASP.NET_Nowy.Models
         public string Surname { get; set; }
         public double Tel { get; set; }
         public double Pesel { get; set; }
+        [DataType(DataType.Date)]
         public DateTime Begin { get; set; }
+        [DataType(DataType.Date)]
         public DateTime End { get; set; }
         public IList<Cloth> Clothes { get; set; }
     }
