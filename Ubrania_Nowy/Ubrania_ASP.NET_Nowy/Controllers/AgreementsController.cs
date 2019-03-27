@@ -13,6 +13,7 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
     public class AgreementsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        public int? pass_id;
 
         public AgreementsController(ApplicationDbContext context)
         {
@@ -36,11 +37,12 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
             var agreement = await _context.Agreements
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (agreement == null)
+
             {
                 return NotFound();
             }
-
             return View(agreement);
+
         }
 
         // GET: Agreements/Create
@@ -124,6 +126,8 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
                 return NotFound();
             }
 
+            
+
             var agreement = await _context.Agreements
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (agreement == null)
@@ -144,6 +148,77 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+      //  [HttpPost, ActionName("GoToClothes")]
+     //   [ValidateAntiForgeryToken]
+        public async Task<IActionResult> GoToClothes(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var cloth = await _context.Clothes.Where(m => m.Agreement_Id == id).ToListAsync();
+            
+
+            TempData["data1"] = id.ToString();
+            return RedirectToAction("Create_Cloth");
+           // return View(cloth);
+           
+
+        }
+
+        public IActionResult Create_Cloth()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create_Cloth(/*[Bind("Id,Name,Surname,Tel,Pesel,Begin,End")] */Cloth cloth)
+        {
+            string str;
+            str = TempData["data1"].ToString();
+
+            if (ModelState.IsValid)
+            {
+                cloth.Agreement_Id =Convert.ToInt32(str); 
+                _context.Add(cloth);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Create_Cloth));
+            }
+            return View(cloth);
+        }
+
+
+
+
+        //public IActionResult Create_Cloth()
+        //{
+        //    ViewData["Agreement_Id"] = new SelectList(_context.Agreements, "Id", "Name");
+        //    return View();
+        //}
+
+        //// POST: Clothes/Create
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Create_Cloth([Bind("Id,Mark,Size,Colour,Type,Description,Price,Price_RL,Agreement_Id,Sold")] Cloth cloth)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _context.Add(cloth);
+        //        await _context.SaveChangesAsync();
+        //        return RedirectToAction(nameof(GoToClothes));
+        //    }
+        //    ViewData["Agreement_Id"] = new SelectList(_context.Agreements, "Id", "Name", cloth.Agreement_Id);
+        //    return View(cloth);
+        //}
+
+
+
+
+
+
 
         private bool AgreementExists(int id)
         {
