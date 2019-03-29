@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Ubrania_ASP.NET_Nowy.Models.Cloth>
+@{
+    ViewData["Title"] = "AgreementClothes";
+}
+
+<h2>Spis Ubrań Umowy: </h2>
+
+<p>
+    @*@Html.Partial("_CreateButtonPartial_2")*@
+</p>
+<div class="form-border">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mark)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Size)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Colour)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price_RL)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sold)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Agreement)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mark)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Size)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Colour)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price_RL)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sold)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Agreement.Name)
+                    </td>
+                    <td>
+                        @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                        @*@Html.Partial("_ClothAddButtonsPartial", item.Id)*@
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-action="Index" class="btn btn-success">Powrót</a>
+</div>

@@ -36,6 +36,8 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
 
             var agreement = await _context.Agreements
                 .SingleOrDefaultAsync(m => m.Id == id);
+            var cloth = await _context.Clothes.Where(m => m.Agreement_Id == id)
+                .ToListAsync();
             if (agreement == null)
 
             {
@@ -156,12 +158,12 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
             {
                 return NotFound();
             }
-            var cloth = await _context.Clothes.Where(m => m.Agreement_Id == id).ToListAsync();
+          //  var cloth = await _context.Clothes.Where(m => m.Agreement_Id == id).ToListAsync();
             
 
             TempData["data1"] = id.ToString();
             return RedirectToAction("Create_Cloth");
-           // return View(cloth);
+          //  return View(cloth);
            
 
         }
@@ -215,7 +217,19 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
         //}
 
 
+        public async Task<IActionResult> AgreementClothes(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+              var cloth = await _context.Clothes.Where(m => m.Agreement_Id == id).ToListAsync();
 
+
+              return View(cloth);
+
+
+        }
 
 
 
