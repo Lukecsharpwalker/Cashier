@@ -53,7 +53,7 @@ namespace Ubrania_Nowy
         {
             try
             {
-                Agreement agreement = new Agreement();
+                Agreements agreement = new Agreements();
 
                 agreement.Name = name_txt.Text;
                 agreement.Surname = surname_txt.Text;
@@ -70,7 +70,7 @@ namespace Ubrania_Nowy
                 MessageBox.Show(fEx.Message + "\nPodaj wszystkie dane lub\nSprawdź poprawność danych");
                 //MessageBox.Show("Podaj wszystkie dane");
             }
-            catch (Exception Ex)
+            catch (Exception)
             {
                 MessageBox.Show("Coś poszło nie tak");
             }
@@ -80,7 +80,7 @@ namespace Ubrania_Nowy
         {
             try
             {
-                Agreement agreement = (Agreement)agreementDataGrid.SelectedItem;
+                Agreements agreement = (Agreements)agreementDataGrid.SelectedItem;
                 // Agreement updateAgreement = _context.Agreements.Where(i => i.Id == agreement.Id).FirstOrDefault();
                 // updateAgreement.Name = name_txt.Text;
                 
@@ -101,7 +101,7 @@ namespace Ubrania_Nowy
                 MessageBox.Show(fEx.Message + "\nPodaj wszystkie dane lub\nSprawdź poprawność danych");
                 //MessageBox.Show("Podaj wszystkie dane");
             }
-            catch (Exception Ex)
+            catch (Exception)
             {
                 MessageBox.Show("Coś poszło nie tak");
             }
@@ -115,8 +115,8 @@ namespace Ubrania_Nowy
         {
             try
             {
-                Agreement deleteAgreement;
-                Agreement agreement = agreementDataGrid.SelectedItem as Agreement;
+                Agreements deleteAgreement;
+                Agreements agreement = agreementDataGrid.SelectedItem as Agreements;
                 deleteAgreement = _context.Agreements.Find(agreement.Id);
                 _context.Agreements.Attach(deleteAgreement);
                 _context.Agreements.Remove(deleteAgreement);
@@ -127,7 +127,7 @@ namespace Ubrania_Nowy
             {
                 MessageBox.Show("Zaznacz Element\n\n" + nEx.Message);
             }
-            catch (Exception Ex)
+            catch (Exception)
             {
                 MessageBox.Show("Coś poszło nie tak");
             }
@@ -138,7 +138,7 @@ namespace Ubrania_Nowy
         {
             try
             {
-                Agreement agreement = (Agreement)agreementDataGrid.SelectedItem;
+                Agreements agreement = (Agreements)agreementDataGrid.SelectedItem;
                 //Agreement updateAgreement = _context.Agreements.Where(i => i.Id == agreement.Id).FirstOrDefault();
 
                 //name_txt.Text = updateAgreement.Name;
@@ -162,7 +162,7 @@ namespace Ubrania_Nowy
             {
                 MessageBox.Show("Zaznacz Element z wartościami\n\n" + iEx.Message);
             }
-            catch (Exception Ex)
+            catch (Exception)
             {
                 MessageBox.Show("Coś poszło nie tak");
             }
@@ -172,7 +172,7 @@ namespace Ubrania_Nowy
         {
             try
             {
-                Agreement agreement = (Agreement)agreementDataGrid.SelectedItem;
+                Agreements agreement = (Agreements)agreementDataGrid.SelectedItem;
                 int passId = agreement.Id;
                 addClothesWindow addclotheswindow = new addClothesWindow(passId);
                 addclotheswindow.Show();
@@ -185,7 +185,7 @@ namespace Ubrania_Nowy
             {
                 MessageBox.Show("Zaznacz Element z wartościami\n\n" + iEx.Message);
             }
-            catch (Exception Ex)
+            catch (Exception)
             {
                 MessageBox.Show("Coś poszło nie tak");
             }
@@ -209,7 +209,7 @@ namespace Ubrania_Nowy
             {
                 MessageBox.Show("Zbyt duży Numer\n\n" + oEx.Message);
             }
-            catch (Exception Ex)
+            catch (Exception)
             {
                 MessageBox.Show("Coś poszło nie tak");
             }
@@ -238,9 +238,9 @@ namespace Ubrania_Nowy
         {
 
 
-            Agreement agreement = (Agreement)agreementDataGrid.SelectedItem;
+            Agreements agreement = (Agreements)agreementDataGrid.SelectedItem;
            // Agreement updateAgreement = _context.Agreements.Where(i => i.Id == agreement.Id).FirstOrDefault();
-            Cloth cloth = new Cloth();
+            Clothes cloth = new Clothes();
 
             try
             {
@@ -353,5 +353,6 @@ namespace Ubrania_Nowy
 
 
         }
+
     }
 }

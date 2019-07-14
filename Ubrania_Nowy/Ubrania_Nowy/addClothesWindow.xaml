@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="addClothesWindow" Height="450" Width="1025.63" Loaded="Window_Loaded">
     <Window.Resources>
-        <CollectionViewSource x:Key="clothViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Cloth}, CreateList=True}"/>
+        <CollectionViewSource x:Key="clothViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Clothes}, CreateList=True}"/>
     </Window.Resources>
     <Grid DataContext="{StaticResource clothViewSource}" Margin="0,0,-262,0">
         <Button x:Name="addCloth_btn" Content="Dodaj Ubranie" HorizontalAlignment="Left" Margin="28,330,0,0" VerticalAlignment="Top" Width="100" Click="addCloth_btn_Click"/>
@@ -23,6 +23,7 @@
                 <DataGridTextColumn x:Name="typeColumn" Binding="{Binding Type}" Header="Type" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="AgreColumn" Binding="{Binding Agreement_Id}" Header="AID" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="SoldColumn" Binding="{Binding Sold}" Header="Sold" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="BoxColumn" Binding="{Binding Box}" Header="Pudło" Width="SizeToHeader"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Marka" HorizontalAlignment="Left" Margin="65,97,0,0" VerticalAlignment="Top"/>
@@ -40,6 +41,8 @@
         <Button x:Name="load_btn" Content="&lt;" HorizontalAlignment="Left" Margin="305,172,0,0" VerticalAlignment="Top" Width="58" Height="23" Click="load_btn_Click"/>
         <Button x:Name="editCloth_btn" Content="Edytuj Ubranie" HorizontalAlignment="Left" Margin="152,330,0,0" VerticalAlignment="Top" Width="85" Click="editCloth_btn_Click"/>
         <Button x:Name="deleteCloth_btn" Content="Usuń " HorizontalAlignment="Left" Margin="259,330,0,0" VerticalAlignment="Top" Width="75" Click="deleteCloth_btn_Click"/>
+        <Label Content="Pudło" HorizontalAlignment="Left" Margin="65,278,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="box_txt" HorizontalAlignment="Left" Height="23" Margin="165,281,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

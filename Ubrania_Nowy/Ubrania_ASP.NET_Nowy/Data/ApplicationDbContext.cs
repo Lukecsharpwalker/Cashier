@@ -17,6 +17,7 @@ namespace Ubrania_ASP.NET_Nowy.Data
 
         public DbSet<Agreement> Agreements { get; set; }
         public DbSet<Cloth> Clothes { get; set; }
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

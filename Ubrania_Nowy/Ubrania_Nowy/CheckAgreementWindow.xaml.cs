@@ -42,7 +42,7 @@ namespace Ubrania_Nowy
             int temp=0;
             var cloth = _context.Clothes.ToList().Where(i => i.Agreement_Id == passId);
             foreach (var price in cloth)
-                temp = temp +price.Price;
+                temp += price.Price;
             MessageBox.Show("" + temp);
         }
     }

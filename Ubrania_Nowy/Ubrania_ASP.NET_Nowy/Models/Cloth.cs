@@ -18,6 +18,7 @@ namespace Ubrania_ASP.NET_Nowy.Models
         public int Price_RL { get; set; }
         public int Agreement_Id { get; set; }
         public bool Sold { get; set; }
+        public string Box { get; set; }
         public Agreement Agreement { get; set; }
     }
 }

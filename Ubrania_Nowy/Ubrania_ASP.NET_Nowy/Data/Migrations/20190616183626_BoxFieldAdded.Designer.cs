@@ -11,9 +11,10 @@ using Ubrania_ASP.NET_Nowy.Data;
 namespace Ubrania_ASP.NET_Nowy.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190616183626_BoxFieldAdded")]
+    partial class BoxFieldAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -159,8 +160,6 @@ namespace Ubrania_ASP.NET_Nowy.Data.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
-                    b.Property<string>("Agreement_Id");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
@@ -180,8 +179,6 @@ namespace Ubrania_ASP.NET_Nowy.Data.Migrations
                         .HasMaxLength(256);
 
                     b.Property<string>("PasswordHash");
-
-                    b.Property<string>("Pesel");
 
                     b.Property<string>("PhoneNumber");
 

@@ -11,9 +11,10 @@ using Ubrania_ASP.NET_Nowy.Data;
 namespace Ubrania_ASP.NET_Nowy.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190714160925_Add_AgrID_and_Pesel_toLogin")]
+    partial class Add_AgrID_and_Pesel_toLogin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

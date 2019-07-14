@@ -5,28 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ubrania_Nowy"
         mc:Ignorable="d"
-        Title="ReturnsWindow" Height="450" Width="968.908" Loaded="Window_Loaded">
+        Title="ReturnsWindow" Height="720" Width="1280" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="clothViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Cloth}, CreateList=True}"/>
     </Window.Resources>
     <Grid DataContext="{StaticResource clothViewSource}">
-        <DataGrid x:Name="clothDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="265,51,167,168" RowDetailsVisibilityMode="VisibleWhenSelected">
+        <DataGrid x:Name="clothDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="265,51,10,168" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="agreement_IdColumn" Binding="{Binding Agreement_Id}" Header="Agreement Id" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="colourColumn" Binding="{Binding Colour}" Header="Colour" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="descriptionColumn" Binding="{Binding Description}" Header="Description" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="markColumn" Binding="{Binding Mark}" Header="Mark" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="priceColumn" Binding="{Binding Price}" Header="Price" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="price_RLColumn" Binding="{Binding Price_RL}" Header="Price RL" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="sizeColumn" Binding="{Binding Size}" Header="Size" Width="SizeToHeader"/>
-                <DataGridCheckBoxColumn x:Name="soldColumn" Binding="{Binding Sold}" Header="Sold" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="typeColumn" Binding="{Binding Type}" Header="Type" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="Id Ubrania" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="agreement_IdColumn" Binding="{Binding Agreement_Id}" Header="Id Umowy" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="colourColumn" Binding="{Binding Colour}" Header="Kolor" Width="100"/>
+                <DataGridTextColumn x:Name="descriptionColumn" Binding="{Binding Description}" Header="Opis" Width="150"/>                
+                <DataGridTextColumn x:Name="markColumn" Binding="{Binding Mark}" Header="Marka" Width="80"/>
+                <DataGridTextColumn x:Name="priceColumn" Binding="{Binding Price}" Header="Cena_Założona" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="price_RLColumn" Binding="{Binding Price_RL}" Header="Cena_za_jaka_się_sprzedało" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="sizeColumn" Binding="{Binding Size}" Header="Rozmiar" Width="SizeToHeader"/>
+                <DataGridCheckBoxColumn x:Name="soldColumn" Binding="{Binding Sold}" Header="Sprzedane?" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="typeColumn" Binding="{Binding Type}" Header="Typ" Width="100"/>
+                <DataGridTextColumn x:Name="boxColumn" Binding="{Binding Box}" Header="Pudło" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="Return_Btn" Content="Zwrot" HorizontalAlignment="Left" Margin="29,214,0,0" VerticalAlignment="Top" Width="75" Click="Return_Btn_Click"/>
         <CheckBox x:Name="Sold_box" Content="Sprzedane?" HorizontalAlignment="Left" Margin="29,141,0,0" VerticalAlignment="Top"/>
         <Button x:Name="Load_Btn" Content="&lt;" HorizontalAlignment="Left" Margin="161,126,0,0" VerticalAlignment="Top" Width="75" Click="Load_Btn_Click"/>
+        <Button x:Name="Sold_Btn" Content="Sprzedane" HorizontalAlignment="Left" Margin="131,214,0,0" VerticalAlignment="Top" Width="105" Click="Sold_Btn_Click"/>
 
     </Grid>
 </Window>

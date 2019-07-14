@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ubrania_Nowy"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="1240.765" Loaded="Window_Loaded">
+        Title="MainWindow" Height="720" Width="1280" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="agreementViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Agreement}, CreateList=True}"/>
     </Window.Resources>
@@ -18,46 +18,46 @@
             <RowDefinition Height="155*"/>
             <RowDefinition Height="264*"/>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="agreementDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="213,23,461,117" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.RowSpan="2" Grid.Column="1">
+        <DataGrid x:Name="agreementDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="213,23,52,0" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.Column="1">
             <DataGrid.Columns>
-                <DataGridTemplateColumn x:Name="beginColumn" Header="Begin" Width="SizeToHeader">
+                <DataGridTemplateColumn x:Name="beginColumn" Header="Begin" Width="100">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <DatePicker SelectedDate="{Binding Begin, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn x:Name="endColumn" Header="End" Width="SizeToHeader">
+                <DataGridTemplateColumn x:Name="endColumn" Header="End" Width="100">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <DatePicker SelectedDate="{Binding End, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="surnameColumn" Binding="{Binding Surname}" Header="Surname" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="peselColumn" Binding="{Binding Pesel}" Header="Pesel" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="telColumn" Binding="{Binding Tel}" Header="Tel" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="Id" Width="50"/>
+                <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="100"/>
+                <DataGridTextColumn x:Name="surnameColumn" Binding="{Binding Surname}" Header="Surname" Width="100"/>
+                <DataGridTextColumn x:Name="peselColumn" Binding="{Binding Pesel}" Header="Pesel" Width="150"/>
+                <DataGridTextColumn x:Name="telColumn" Binding="{Binding Tel}" Header="Tel" Width="150"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="add_btn" Content="Dodaj" HorizontalAlignment="Left" Margin="19,127,0,0" VerticalAlignment="Top" Width="75" Grid.Row="1" Click="add_btn_Click"/>
+        <Button x:Name="add_btn" Content="Dodaj" HorizontalAlignment="Left" Margin="24,0,0,0" VerticalAlignment="Top" Width="75" Grid.Row="1" Click="add_btn_Click"/>
         <TextBox x:Name="name_txt" HorizontalAlignment="Left" Height="23" Margin="143,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
         <TextBox x:Name="surname_txt" HorizontalAlignment="Left" Height="23" Margin="143,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="pesel_txt" HorizontalAlignment="Left" Height="23" Margin="143,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="tel_txt" HorizontalAlignment="Left" Height="23" Margin="143,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="pesel_txt" HorizontalAlignment="Left" Height="23" Margin="143,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="tel_txt" HorizontalAlignment="Left" Height="23" Margin="143,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
         <Label Content="Imie" HorizontalAlignment="Left" Margin="46,52,0,0" VerticalAlignment="Top"/>
         <Label Content="Nazwisko" HorizontalAlignment="Left" Margin="24,97,0,0" VerticalAlignment="Top" Height="27" Width="76"/>
-        <Label Content="PESEL" HorizontalAlignment="Left" Margin="38,0,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label Content="TEL" HorizontalAlignment="Left" Margin="46,45,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Button x:Name="edit_btn" Content="Edytuj" HorizontalAlignment="Left" Margin="109,127,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="edit_btn_Click" Grid.ColumnSpan="2"/>
-        <Button x:Name="remove_btn" Content="Usun" HorizontalAlignment="Left" Margin="42,127,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="remove_btn_Click" Grid.Column="1"/>
-        <Button x:Name="load_btn" Content="&lt;" HorizontalAlignment="Left" Margin="134,0,0,0" VerticalAlignment="Top" Width="58" Height="23" Grid.Row="1" Click="load_btn_Click" Grid.Column="1"/>
-        <Button x:Name="addClothes_btn" Content="Dodaj Ubrania" HorizontalAlignment="Left" Margin="25,199,0,0" Grid.Row="1" VerticalAlignment="Top" Width="98" Click="addClothes_btn_Click"/>
-        <Button x:Name="CheckAgreement_btn" Content="Sprawdź Umowę" HorizontalAlignment="Left" Margin="729,37,0,0" VerticalAlignment="Top" Width="98" Grid.Column="1" Click="CheckAgreement_btn_Click"/>
-        <TextBox x:Name="CheckAgreementId_txt" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="585,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="Cashier_btn" Content="Kasjer" Grid.Column="1" HorizontalAlignment="Left" Margin="236,180,0,0" Grid.Row="1" VerticalAlignment="Top" Width="176" Click="Cashier_btn_Click"/>
-        <Button x:Name="Warehouse_btn" Content="Sprawdz stan" Grid.Column="1" HorizontalAlignment="Left" Margin="490,179,0,0" Grid.Row="1" VerticalAlignment="Top" Width="124" RenderTransformOrigin="0.5,0.5" Click="Warehouse_btn_Click">
+        <Label Content="PESEL" HorizontalAlignment="Left" Margin="33,144,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.244,-4.231"/>
+        <Label Content="TEL" HorizontalAlignment="Left" Margin="46,190,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.411,-3.577"/>
+        <Button x:Name="edit_btn" Content="Edytuj" HorizontalAlignment="Left" Margin="118,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="edit_btn_Click"/>
+        <Button x:Name="remove_btn" Content="Usun" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="remove_btn_Click" Grid.Column="1"/>
+        <Button x:Name="load_btn" Content="&lt;" HorizontalAlignment="Left" Margin="125,127,0,0" VerticalAlignment="Top" Width="58" Height="23" Click="load_btn_Click" Grid.Column="1"/>
+        <Button x:Name="addClothes_btn" Content="Dodaj Ubrania" HorizontalAlignment="Left" Margin="24,53,0,0" Grid.Row="1" VerticalAlignment="Top" Width="98" Click="addClothes_btn_Click"/>
+        <Button x:Name="CheckAgreement_btn" Content="Sprawdź Umowę" HorizontalAlignment="Left" Margin="358,31,0,0" VerticalAlignment="Top" Width="98" Grid.Column="1" Click="CheckAgreement_btn_Click" Grid.Row="1"/>
+        <TextBox x:Name="CheckAgreementId_txt" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="213,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <Button x:Name="Cashier_btn" Content="Kasjer" HorizontalAlignment="Left" Margin="0,101,0,0" Grid.Row="1" VerticalAlignment="Top" Width="1262" Click="Cashier_btn_Click" Grid.ColumnSpan="2"/>
+        <Button x:Name="Warehouse_btn" Content="Sprawdz stan" Grid.Column="1" HorizontalAlignment="Left" Margin="634,29,0,0" Grid.Row="1" VerticalAlignment="Top" Width="124" RenderTransformOrigin="0.5,0.5" Click="Warehouse_btn_Click">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -67,8 +67,8 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="Return_btn" Content="Zwroty" Grid.Column="1" HorizontalAlignment="Left" Margin="649,180,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="Return_btn_Click"/>
-        <Button x:Name="Print_Btn" Content="Drukuj Umowe" Grid.Column="1" HorizontalAlignment="Left" Margin="729,82,0,0" VerticalAlignment="Top" Width="98" Click="Print_Btn_Click"/>
+        <Button x:Name="Return_btn" Content="Zwroty/Ręczne dodawanie" Grid.Column="1" HorizontalAlignment="Left" Margin="793,31,0,0" Grid.Row="1" VerticalAlignment="Top" Width="157" Click="Return_btn_Click"/>
+        <Button x:Name="Print_Btn" Content="Drukuj Umowe" Grid.Column="1" HorizontalAlignment="Left" Margin="504,31,0,0" VerticalAlignment="Top" Width="98" Click="Print_Btn_Click" Grid.Row="1"/>
 
     </Grid>
 </Window>

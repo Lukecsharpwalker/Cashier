@@ -44,7 +44,7 @@ namespace Ubrania_Nowy
             //   MessageBox.Show("" + passId);
             try
             {
-                Cloth cloth = new Cloth();
+                Clothes cloth = new Clothes();
 
                 cloth.Agreement_Id = passId;
                 cloth.Mark = mark_txt.Text;
@@ -53,6 +53,7 @@ namespace Ubrania_Nowy
                 cloth.Type = type_txt.Text;
                 cloth.Description = description_txt.Text;
                 cloth.Price = Convert.ToInt32(price_txt.Text);
+                cloth.Box = box_txt.Text;
 
                 _context.Clothes.Add(cloth);
                 _context.SaveChanges();
@@ -63,7 +64,7 @@ namespace Ubrania_Nowy
                 MessageBox.Show(fEx.Message + "\nPodaj wszystkie dane lub\nSprawdź poprawność danych");
                 //MessageBox.Show("Podaj wszystkie dane");
             }
-            catch (Exception Ex)
+            catch (Exception)
             {
                 MessageBox.Show("Coś poszło nie tak");
             }
@@ -73,13 +74,14 @@ namespace Ubrania_Nowy
         {
             try
             {
-                Cloth cloth = clothDataGrid.SelectedItem as Cloth;
+                Clothes cloth = clothDataGrid.SelectedItem as Clothes;
 
                 mark_txt.Text = cloth.Mark;
                 size_txt.Text = cloth.Size;
                 colour_txt.Text = cloth.Colour;
                 type_txt.Text = cloth.Type;
                 description_txt.Text = cloth.Description;
+                box_txt.Text = cloth.Box;
                 price_txt.Text = Convert.ToString(cloth.Price);
             }
             catch (NullReferenceException nEx)
@@ -90,7 +92,7 @@ namespace Ubrania_Nowy
             {
                 MessageBox.Show("Zaznacz Element z wartościami\n\n" + iEx.Message);
             }
-            catch (Exception Ex)
+            catch (Exception)
             {
                 MessageBox.Show("Coś poszło nie tak");
             }
@@ -99,8 +101,8 @@ namespace Ubrania_Nowy
         {
             try
             {
-                Cloth cloth = clothDataGrid.SelectedItem as Cloth;
-                Cloth updateCloth = _context.Clothes.Where(i => i.Id == cloth.Id).FirstOrDefault();
+                Clothes cloth = clothDataGrid.SelectedItem as Clothes;
+                Clothes updateCloth = _context.Clothes.Where(i => i.Id == cloth.Id).FirstOrDefault();
 
 
 
@@ -111,7 +113,8 @@ namespace Ubrania_Nowy
                 cloth.Colour = colour_txt.Text;
                 cloth.Type = type_txt.Text;
                 cloth.Description = description_txt.Text;
-                
+                cloth.Box = box_txt.Text;
+
 
                 _context.SaveChanges();
                 clothDataGrid.ItemsSource = _context.Clothes.ToList();
@@ -125,7 +128,7 @@ namespace Ubrania_Nowy
                 MessageBox.Show(fEx.Message + "\nPodaj wszystkie dane lub\nSprawdź poprawność danych");
                 //MessageBox.Show("Podaj wszystkie dane");
             }
-            catch (Exception Ex)
+            catch (Exception)
             {
                 MessageBox.Show("Coś poszło nie tak");
             }
@@ -140,8 +143,8 @@ namespace Ubrania_Nowy
         {
             try
             {
-                Cloth deleteCloth;
-                Cloth cloth = clothDataGrid.SelectedItem as Cloth;
+                Clothes deleteCloth;
+                Clothes cloth = clothDataGrid.SelectedItem as Clothes;
                 deleteCloth = _context.Clothes.Find(cloth.Id);
                 _context.Clothes.Attach(deleteCloth);
                 _context.Clothes.Remove(deleteCloth);
@@ -152,7 +155,7 @@ namespace Ubrania_Nowy
             {
                 MessageBox.Show("Zaznacz Element\n\n" + nEx.Message);
             }
-            catch (Exception Ex)
+            catch (Exception)
             {
                 MessageBox.Show("Coś poszło nie tak");
             }

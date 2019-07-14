@@ -38,10 +38,10 @@ namespace Ubrania_Nowy
             {
                 int temp = Convert.ToInt32(Scaner_txt.Text);
                 // Cloth cloth = _context.Clothes.Where(i => i.Id == temp).FirstOrDefault();
-                Cloth cloth = _context.Clothes.FirstOrDefault(i => i.Id == temp);
+                Clothes cloth = _context.Clothes.FirstOrDefault(i => i.Id == temp);
                 if (cloth.Sold == false)
                 { cloth.Sold = true; }
-                temp2 = temp2 + cloth.Price;
+                temp2 += cloth.Price;
                 price_txt.Text = temp2.ToString();
 
                 _context.SaveChanges();

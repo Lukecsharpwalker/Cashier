@@ -39,7 +39,7 @@ namespace Ubrania_Nowy
         {
             try
             {
-                Cloth cloth = clothDataGrid.SelectedItem as Cloth;
+                Clothes cloth = clothDataGrid.SelectedItem as Clothes;
                 Sold_box.IsChecked = Convert.ToBoolean(cloth.Sold);
                 clothDataGrid.ItemsSource = _context.Clothes.ToList();
             }
@@ -51,7 +51,7 @@ namespace Ubrania_Nowy
             {
                 MessageBox.Show("Zaznacz Element z wartościami\n\n" + iEx.Message);
             }
-            catch (Exception Ex)
+            catch (Exception)
             {
                 MessageBox.Show("Coś poszło nie tak");
             }
@@ -61,9 +61,9 @@ namespace Ubrania_Nowy
         {
             try
             {
-                
-                Cloth cloth = (Cloth)clothDataGrid.SelectedItem; //agreementDataGrid.SelectedItem as Agreement;
-               // Cloth updateCloth = _context.Clothes.FirstOrDefault(i => i.Id == cloth.Id);
+
+                Clothes cloth = (Clothes)clothDataGrid.SelectedItem; //agreementDataGrid.SelectedItem as Agreement;
+                                                                 // Cloth updateCloth = _context.Clothes.FirstOrDefault(i => i.Id == cloth.Id);
                 if (cloth.Sold == true)
                 {
                     cloth.Sold = (bool)Sold_box.IsChecked;
@@ -76,6 +76,25 @@ namespace Ubrania_Nowy
                 MessageBox.Show("\nZaznacz Umowę\n\n" + tEx.Message);
             }
 
+        }
+
+        private void Sold_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Clothes cloth = (Clothes)clothDataGrid.SelectedItem;
+
+                if (cloth.Sold == false)
+                {
+                    cloth.Sold = (bool)Sold_box.IsChecked;
+                    _context.SaveChanges();
+                    clothDataGrid.ItemsSource = _context.Clothes.ToList();
+                }
+            }
+            catch (TargetException tEx)
+            {
+                MessageBox.Show("\nZaznacz Umowę\n\n" + tEx.Message);
+            }
         }
     }
 }
