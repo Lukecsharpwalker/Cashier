@@ -71,9 +71,9 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(/*[Bind("Id,Name,Surname,Tel,Pesel,Begin,End")] */Agreement agreement, string returnUrl = null)
+        public async Task<IActionResult> Create(/*[Bind("Id,Name,Surname,Tel,Pesel,Begin,End")] */Agreement agreement/*, string returnUrl = null*/)
         {
-            ViewData["ReturnUrl"] = returnUrl;
+            //ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
                 _context.Add(agreement);
@@ -87,20 +87,21 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
                     UserName = agreement.Id.ToString(),
                     Agreement_Id = agreement.Id.ToString(),
                 };
-                var result = await _userManager.CreateAsync(user, agreement.Pesel.ToString());
-                if (result.Succeeded)
-                {
-                    _logger.LogInformation("User created a new account with password.");
+                /*var result =*/ await _userManager.CreateAsync(user, agreement.Pesel.ToString());
+                //if (result.Succeeded)
+                //{
+                //    _logger.LogInformation("User created a new account with password.");
 
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
-                    //await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
+                //    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                //    var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
+                //    //await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
 
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    _logger.LogInformation("User created a new account with password.");
-                   // return RedirectToAction(nameof(Index));
-                    return RedirectToLocal(returnUrl);
-                }
+                //    await _signInManager.SignInAsync(user, isPersistent: false);
+                //    _logger.LogInformation("User created a new account with password.");
+                //   // return RedirectToAction(nameof(Index));
+                //    return RedirectToLocal(returnUrl);
+                //}
+                return RedirectToAction(nameof(Index));
             }
 
             return View(agreement);
