@@ -14,6 +14,7 @@ using Ubrania_ASP.NET_Nowy.Data;
 using Ubrania_ASP.NET_Nowy.Models;
 using Ubrania_ASP.NET_Nowy.Models.AccountViewModels;
 using Ubrania_ASP.NET_Nowy.Services;
+using Ubrania_ASP.NET_Nowy.Utility;
 
 namespace Ubrania_ASP.NET_Nowy.Controllers
 {
@@ -233,6 +234,19 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
                 var result = await _userManager.CreateAsync(user, model.Pesel);
                 if (result.Succeeded)
                 {
+                    if (!await _roleManager.RoleExistsAsync(SD.AdminEndUser))
+                    {
+                        await _roleManager.CreateAsync(new IdentityRole(SD.AdminEndUser));
+                    }
+
+                    if (!await _roleManager.RoleExistsAsync(SD.CustomerEndUser))
+                    {
+                        await _roleManager.CreateAsync(new IdentityRole(SD.CustomerEndUser));
+                    }
+
+                    await _userManager.AddToRoleAsync(user, SD.AdminEndUser);
+
+
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

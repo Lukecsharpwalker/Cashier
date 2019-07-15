@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model IdentityRole
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -40,7 +41,7 @@
                         Klient
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Sprawdz Umowę</a>
+                        <a class="dropdown-item" asp-controller="Agreements" asp-action="DetailsCustomer" asp-route-id="3">Sprawdz Umowę</a>
                     </div>
                 </li>
 

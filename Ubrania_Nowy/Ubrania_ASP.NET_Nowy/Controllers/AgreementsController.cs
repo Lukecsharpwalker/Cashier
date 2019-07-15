@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Ubrania_ASP.NET_Nowy.Data;
 using Ubrania_ASP.NET_Nowy.Models;
+using Ubrania_ASP.NET_Nowy.Utility;
 
 namespace Ubrania_ASP.NET_Nowy.Controllers
 {
@@ -18,19 +19,22 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
         private readonly ILogger _logger;
+        private readonly RoleManager<IdentityRole> _roleManager;
         public int? pass_id;
 
         public AgreementsController(
             ApplicationDbContext context,
              UserManager<ApplicationUser> userManager,
              ILogger<AccountController> logger,
-             SignInManager<ApplicationUser> signInManager
+             SignInManager<ApplicationUser> signInManager,
+             RoleManager<IdentityRole> roleManager
             )
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _context = context;
             _logger = logger;
+            _roleManager = roleManager;
         }
 
         // GET: Agreements
@@ -41,6 +45,26 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
 
         // GET: Agreements/Details/5
         public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var agreement = await _context.Agreements
+                .SingleOrDefaultAsync(m => m.Id == id);
+            var cloth = await _context.Clothes.Where(m => m.Agreement_Id == id)
+                .ToListAsync();
+            if (agreement == null)
+
+            {
+                return NotFound();
+            }
+            return View(agreement);
+
+        }
+
+        public async Task<IActionResult> DetailsCustomer(int? id)
         {
             if (id == null)
             {
@@ -85,20 +109,25 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
                     UserName = agreement.Id.ToString(),
                     Agreement_Id = agreement.Id.ToString(),
                 };
-                /*var result =*/ await _userManager.CreateAsync(user, agreement.Pesel.ToString());
-                //if (result.Succeeded)
-                //{
-                //    _logger.LogInformation("User created a new account with password.");
 
-                //    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                //    var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
-                //    //await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
+                var result = await _userManager.CreateAsync(user, agreement.Pesel.ToString());
 
-                //    await _signInManager.SignInAsync(user, isPersistent: false);
-                //    _logger.LogInformation("User created a new account with password.");
-                //   // return RedirectToAction(nameof(Index));
-                //    return RedirectToLocal(returnUrl);
-                //}
+                if(result.Succeeded)
+                {
+                     if(! await _roleManager.RoleExistsAsync(SD.AdminEndUser))
+                    {
+                        await _roleManager.CreateAsync(new IdentityRole(SD.AdminEndUser));
+                    }
+
+                    if (!await _roleManager.RoleExistsAsync(SD.CustomerEndUser))
+                    {
+                        await _roleManager.CreateAsync(new IdentityRole(SD.CustomerEndUser));
+                    }
+
+                    await _userManager.AddToRoleAsync(user, SD.CustomerEndUser);
+
+                }
+                
                 return RedirectToAction(nameof(Index));
             }
 
@@ -162,9 +191,7 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
             if (id == null)
             {
                 return NotFound();
-            }
-
-            
+            }            
 
             var agreement = await _context.Agreements
                 .SingleOrDefaultAsync(m => m.Id == id);
@@ -229,28 +256,7 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
 
 
 
-        //public IActionResult Create_Cloth()
-        //{
-        //    ViewData["Agreement_Id"] = new SelectList(_context.Agreements, "Id", "Name");
-        //    return View();
-        //}
-
-        //// POST: Clothes/Create
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create_Cloth([Bind("Id,Mark,Size,Colour,Type,Description,Price,Price_RL,Agreement_Id,Sold")] Cloth cloth)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _context.Add(cloth);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(GoToClothes));
-        //    }
-        //    ViewData["Agreement_Id"] = new SelectList(_context.Agreements, "Id", "Name", cloth.Agreement_Id);
-        //    return View(cloth);
-        //}
+       
 
 
         public async Task<IActionResult> AgreementClothes(int? id)
@@ -274,16 +280,6 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
         {
             return _context.Agreements.Any(e => e.Id == id);
         }
-        private IActionResult RedirectToLocal(string returnUrl)
-        {
-            if (Url.IsLocalUrl(returnUrl))
-            {
-                return Redirect(returnUrl);
-            }
-            else
-            {
-                return RedirectToAction(nameof(HomeController.Index), "Home");
-            }
-        }
+      
     }
 }
