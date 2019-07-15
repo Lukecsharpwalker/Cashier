@@ -1,7 +1,77 @@
-﻿
-@{
-    ViewData["Title"] = "DetailsCustomer";
-}
+﻿@model Ubrania_ASP.NET_Nowy.Models.Agreement
 
-<h2>DetailsCustomer</h2>
+@{
+    ViewData["Title"] = "Details";
+}
+<br />
+<h2>Szczegóły</h2>
+<br />
+<div class="form-border">
+    <h4>Umowa nr: @Html.DisplayFor(Model => Model.Id)</h4>
+    <hr />
+    <fieldset disabled>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Id" class="custom-label"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Id" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Name" class="custom-label"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Name" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Surname" class="custom-label"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Surname" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Tel" class="custom-label"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Tel" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Begin" class="custom-label"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Begin" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="End" class="custom-label"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="End" class="form-control" />
+            </div>
+        </div>
+
+    </fieldset>
+
+
+
+
+
+
+
+    <div class="form-group">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edytuj</a> |
+        <a asp-action="Index" class="btn btn-success">Powrót</a>
+    </div>
+</div>
+
+
 

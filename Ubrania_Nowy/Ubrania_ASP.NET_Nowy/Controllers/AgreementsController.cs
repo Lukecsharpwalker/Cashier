@@ -266,13 +266,22 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
                 return NotFound();
             }
               var cloth = await _context.Clothes.Where(m => m.Agreement_Id == id).ToListAsync();
-
-
+        
               return View(cloth);
-
-
         }
 
+        public async Task<IActionResult> AgreementClothesCustomer()
+        {
+            var id = HttpContext.User.Identity.Name;
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var cloth = await _context.Clothes.Where(m => m.Agreement_Id.ToString() == id).ToListAsync();
+
+            return View(cloth);
+        }
 
 
 
