@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -38,12 +39,14 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
         }
 
         // GET: Agreements
+        [Authorize(Roles = SD.AdminEndUser)]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Agreements.ToListAsync());
         }
 
         // GET: Agreements/Details/5
+        [Authorize(Roles = SD.AdminEndUser)]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -64,6 +67,7 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
 
         }
 
+        [Authorize(Roles = SD.AdminEndUser)]
         public async Task<IActionResult> DetailsCustomer(int? id)
         {
             if (id == null)
@@ -85,6 +89,7 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
         }
 
         // GET: Agreements/Create
+        [Authorize(Roles = SD.AdminEndUser)]
         public IActionResult Create()
         {
             return View();
@@ -93,6 +98,7 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
         // POST: Agreements/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles=SD.AdminEndUser)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(/*[Bind("Id,Name,Surname,Tel,Pesel,Begin,End")] */Agreement agreement/*, string returnUrl = null*/)
@@ -134,6 +140,7 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
             return View(agreement);
         }
 
+        [Authorize(Roles = SD.AdminEndUser)]
         // GET: Agreements/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -153,6 +160,7 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
         // POST: Agreements/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = SD.AdminEndUser)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, /*[Bind("Id,Name,Surname,Tel,Pesel,Begin,End")]*/ Agreement agreement)
@@ -186,6 +194,7 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
         }
 
         // GET: Agreements/Delete/5
+        [Authorize(Roles = SD.AdminEndUser)]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -204,6 +213,7 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
         }
 
         // POST: Agreements/Delete/5
+        [Authorize(Roles = SD.AdminEndUser)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -213,8 +223,9 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-      //  [HttpPost, ActionName("GoToClothes")]
-     //   [ValidateAntiForgeryToken]
+        //  [HttpPost, ActionName("GoToClothes")]
+        //   [ValidateAntiForgeryToken]
+        [Authorize(Roles = SD.AdminEndUser)]
         public async Task<IActionResult> GoToClothes(int? id)
         {
             if (id == null)
@@ -230,12 +241,12 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
            
 
         }
-
+        [Authorize(Roles = SD.AdminEndUser)]
         public IActionResult Create_Cloth()
         {
             return View();
         }
-
+        [Authorize(Roles = SD.AdminEndUser)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create_Cloth(/*[Bind("Id,Name,Surname,Tel,Pesel,Begin,End")] */Cloth cloth)
@@ -256,9 +267,9 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
 
 
 
-       
 
 
+        [Authorize(Roles = SD.AdminEndUser)]
         public async Task<IActionResult> AgreementClothes(int? id)
         {
             if (id == null)

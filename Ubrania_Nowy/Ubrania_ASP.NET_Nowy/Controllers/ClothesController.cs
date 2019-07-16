@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Ubrania_ASP.NET_Nowy.Data;
 using Ubrania_ASP.NET_Nowy.Models;
+using Ubrania_ASP.NET_Nowy.Utility;
 
 namespace Ubrania_ASP.NET_Nowy.Controllers
 {
+    [Authorize(Roles = SD.AdminEndUser)]
     public class ClothesController : Controller
     {
         private readonly ApplicationDbContext _context;
