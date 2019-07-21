@@ -8,13 +8,12 @@ using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 using Ubrania_ASP.NET_Nowy.Data;
 
-namespace Ubrania_ASP.NET_Nowy.Data.Migrations
+namespace Ubrania_ASP.NET_Nowy.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190714160925_Add_AgrID_and_Pesel_toLogin")]
-    partial class Add_AgrID_and_Pesel_toLogin
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

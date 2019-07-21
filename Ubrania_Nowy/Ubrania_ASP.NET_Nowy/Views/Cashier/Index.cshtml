@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Ubrania_ASP.NET_Nowy.Models.Cloth>
+{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Kasjer</h2>
+
+@using (Html.BeginForm("TakePrice", "Cashier"))
+{
+<input  type="text" id="Id" name="Id" />
+}

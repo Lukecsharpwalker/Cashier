@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 using Ubrania_ASP.NET_Nowy.Data;
 
-namespace Ubrania_ASP.NET_Nowy.Data.Migrations
+namespace Ubrania_ASP.NET_Nowy.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190714172928_ValidationOff2")]
-    partial class ValidationOff2
+    [Migration("20190715204531_new")]
+    partial class @new
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
