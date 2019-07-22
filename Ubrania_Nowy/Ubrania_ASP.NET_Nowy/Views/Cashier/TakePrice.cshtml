@@ -8,15 +8,14 @@
         <thead>
             <tr>
 
-                @foreach (var item in Model)
-                {
-                   <tr>
+                
+                <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Id)
+                        @TempData["PriceCounter"]
                     </td>
 
                 </tr>
-                }
+            
             </thead>
         </table>
     </div>
