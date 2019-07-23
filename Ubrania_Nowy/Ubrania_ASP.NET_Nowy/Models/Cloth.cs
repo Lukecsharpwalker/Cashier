@@ -20,6 +20,7 @@ namespace Ubrania_ASP.NET_Nowy.Models
         public int Agreement_Id { get; set; }
         public bool Sold { get; set; }
         public string Box { get; set; }
+        public Cloth ClothList { get; set; }
         public Agreement Agreement { get; set; }
     }
 }

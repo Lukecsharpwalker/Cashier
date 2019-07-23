@@ -1,9 +1,11 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Ubrania_ASP.NET_Nowy.Data;
 using Ubrania_ASP.NET_Nowy.Models;
+using Ubrania_ASP.NET_Nowy.ViewModels;
 
 namespace Ubrania_ASP.NET_Nowy.Controllers
 {
@@ -26,25 +28,24 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> TakePrice(Cloth cloth, bool close)
-        {
+        public async Task<IActionResult> TakePrice(ClothViewModel clothViewModel)
+        {           
 
+           
 
-            if (cloth.Id == 0)
-            {
-                return NotFound();
-            }
+            var SingleCloth = await _context.Clothes.Where(c => c.Id == clothViewModel.Id).SingleOrDefaultAsync();
+            clothViewModel.PriceCounter = SingleCloth.Price + clothViewModel.PriceCounter;
 
-            var PC = await _context.Clothes.Where(c => c.Id == cloth.Id).SingleOrDefaultAsync();
-            PC.PriceCounter = PC.Price + cloth.PriceCounter;
+            clothViewModel.ClothList.Add(SingleCloth);
 
-            PC.Sold = true;
-            _context.SaveChanges();
+            SingleCloth.Sold = true;
+
+            await _context.SaveChangesAsync();
             //if (close == true)
             //{
             //    _context.Update(PC);
             //}
-            return View("Index", PC);
+            return View("Index", clothViewModel);
 
         }
     }

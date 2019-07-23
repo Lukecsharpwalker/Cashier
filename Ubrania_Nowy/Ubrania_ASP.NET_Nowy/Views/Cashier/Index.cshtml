@@ -1,18 +1,22 @@
-﻿@model Cloth
+﻿@model Ubrania_ASP.NET_Nowy.ViewModels.ClothViewModel
 
 <h2>Kasjer</h2>
 <form asp-action="TakePrice">
     <input asp-for="Id" value="" autofocus />
     <span asp-validation-for="Id" class="text-danger"></span>
-    <input type="submit" value="OK" class="btn btn-success" style="display:none" />
+    <input type="submit" value="OK" class="btn btn-success" />
 
     @if (Model != null)
     {
 
         <input asp-for="PriceCounter" value="@Model.PriceCounter" />
-
+        @for (int i = 0; i < Model.ClothList.Count; i++)
+        {
+            @Html.HiddenFor(m => m.ClothList[i].Id)
+        }
     }
-    
+
+
 </form>
 @using (Html.BeginForm("TakePrice", "Cashier"))
 {
