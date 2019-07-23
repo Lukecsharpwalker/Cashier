@@ -1,12 +1,20 @@
-﻿@model IEnumerable<Ubrania_ASP.NET_Nowy.Models.Cloth>
-
+﻿@model Cloth
 
 <h2>Kasjer</h2>
+<form asp-action="TakePrice">
+    <input asp-for="Id" value="" autofocus />
+    <span asp-validation-for="Id" class="text-danger"></span>
+    <input type="submit" value="OK" class="btn btn-success" style="display:none" />
 
+    @if (Model != null)
+    {
+
+        <input asp-for="PriceCounter" value="@Model.PriceCounter" />
+
+    }
+    
+</form>
 @using (Html.BeginForm("TakePrice", "Cashier"))
 {
-    <input type="text" id="Id" name="Id" />
-}
-@section Scripts {
-    @{await Html.RenderPartialAsync("TakePrice");}
+    <button id="close" name="close" value="true" class="btn btn-sm btn-dark"> Zamknij </button>
 }

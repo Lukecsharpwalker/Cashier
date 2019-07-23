@@ -1,21 +1,28 @@
-﻿@model System.Collections.Generic.List<Ubrania_ASP.NET_Nowy.Models.Cloth>
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<Ubrania_ASP.NET_Nowy.Models.Cloth>
 
-<div class="form-border">
-    <table class="table">
-        <thead>
-            <tr>
 
-                
+    <div class="form-border">
+        <table class="table">
+            <thead>
+                <tr>
+                    @if (Model != null)
+                    {
+                    @foreach (var item in Model)
+                    {
                 <tr>
                     <td>
-                        @TempData["PriceCounter"]
+                        @Html.DisplayFor(modelItem => item.PriceCounter)
                     </td>
 
                 </tr>
-            
+                }
+
+
+                <tr>
+                    <td></td>
+                </tr>
+                }
+
             </thead>
         </table>
     </div>

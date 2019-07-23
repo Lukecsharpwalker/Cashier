@@ -3,13 +3,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Ubrania_ASP.NET_Nowy.Data;
+using Ubrania_ASP.NET_Nowy.Models;
 
 namespace Ubrania_ASP.NET_Nowy.Controllers
 {
     public class CashierController : Controller
-        
+
     {
-        
+
         private readonly ApplicationDbContext _context;
         public CashierController(
                ApplicationDbContext context
@@ -24,23 +25,26 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
             return View();
         }
 
-        public async Task<IActionResult> TakePrice(int? Id, string PriceCounter)
+        [HttpPost]
+        public async Task<IActionResult> TakePrice(Cloth cloth, bool close)
         {
 
-            PriceCounter = TempData["PriceCounter"] as string;
 
-            if (Id == null)
+            if (cloth.Id == 0)
             {
                 return NotFound();
             }
 
+            var PC = await _context.Clothes.Where(c => c.Id == cloth.Id).SingleOrDefaultAsync();
+            PC.PriceCounter = PC.Price + cloth.PriceCounter;
 
-            var clothPrice = await _context.Clothes.Where(c => c.Id == Id).ToListAsync();
-
-            TempData["PriceCounter"] += clothPrice[0].Price.ToString();
-            TempData.Keep();
-
-            return View("Index");
+            PC.Sold = true;
+            _context.SaveChanges();
+            //if (close == true)
+            //{
+            //    _context.Update(PC);
+            //}
+            return View("Index", PC);
 
         }
     }
