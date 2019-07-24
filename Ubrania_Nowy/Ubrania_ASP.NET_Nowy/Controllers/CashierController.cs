@@ -32,8 +32,9 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
         {           
 
            
-
+            
             var SingleCloth = await _context.Clothes.Where(c => c.Id == clothViewModel.Id).SingleOrDefaultAsync();
+
             clothViewModel.PriceCounter = SingleCloth.Price + clothViewModel.PriceCounter;
 
             clothViewModel.ClothList.Add(SingleCloth);

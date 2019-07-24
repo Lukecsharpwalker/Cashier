@@ -1,23 +1,91 @@
 ﻿@model Ubrania_ASP.NET_Nowy.ViewModels.ClothViewModel
 
 <h2>Kasjer</h2>
-<form asp-action="TakePrice">
-    <input asp-for="Id" value="" autofocus />
-    <span asp-validation-for="Id" class="text-danger"></span>
-    <input type="submit" value="OK" class="btn btn-success" />
 
-    @if (Model != null)
-    {
+<div class="row">
+    <div class="col-sm-4">
+        <form asp-action="TakePrice">
+            <input asp-for="Id" value="" autofocus />
+            <span asp-validation-for="Id" class="text-danger"></span>
+            <input type="submit" value="OK" class="btn btn-success" style="display:none" />
 
-        <input asp-for="PriceCounter" value="@Model.PriceCounter" />
-        @for (int i = 0; i < Model.ClothList.Count; i++)
+            @if (Model != null)
+            {
+                <input asp-for="PriceCounter" value="@Model.PriceCounter" />
+
+                @for (int i = 0; i < Model.ClothList.Count; i++)
+                {
+                    @Html.HiddenFor(m => m.ClothList[i].Id)
+                    @Html.HiddenFor(m => m.ClothList[i].Mark)
+                    @Html.HiddenFor(m => m.ClothList[i].Price)
+                    @Html.HiddenFor(m => m.ClothList[i].Size)
+                    @Html.HiddenFor(m => m.ClothList[i].Type)
+                }
+
+
+            }
+        </form>
+    </div>
+    <div class="col-sm-4">
+        @if (Model != null)
         {
-            @Html.HiddenFor(m => m.ClothList[i].Id)
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Marka
+                        </th>
+                        <th>
+                            Cena
+                        </th>
+                      
+                        <th>
+                            Rozmiar
+                        </th>
+                        <th>
+                            Typ
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ClothList)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mark)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Size)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Type)
+                            </td>
+                                                    
+                        </tr>
+                    }
+                    <tr>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+
         }
-    }
 
+    </div>
+</div>
 
-</form>
 @using (Html.BeginForm("TakePrice", "Cashier"))
 {
     <button id="close" name="close" value="true" class="btn btn-sm btn-dark"> Zamknij </button>
