@@ -42,10 +42,12 @@ namespace Ubrania_ASP.NET_Nowy.Controllers
             SingleCloth.Sold = true;
 
             await _context.SaveChangesAsync();
+
             //if (close == true)
             //{
             //    _context.Update(PC);
             //}
+
             return View("Index", clothViewModel);
 
         }

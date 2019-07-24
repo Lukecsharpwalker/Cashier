@@ -10,7 +10,7 @@
             <input type="submit" value="OK" class="btn btn-success" style="display:none" />
 
             @if (Model != null)
-            {                
+            {
 
                 @for (int i = 0; i < Model.ClothList.Count; i++)
                 {
@@ -20,6 +20,7 @@
                     @Html.HiddenFor(m => m.ClothList[i].Size)
                     @Html.HiddenFor(m => m.ClothList[i].Type)
                 }
+              
 
             }
 
