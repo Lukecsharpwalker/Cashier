@@ -1,17 +1,16 @@
 ﻿@model Ubrania_ASP.NET_Nowy.ViewModels.ClothViewModel
 
 <h2>Kasjer</h2>
+<form asp-action="TakePrice">
+    <div class="row">
+        <div class="col-sm-4">
 
-<div class="row">
-    <div class="col-sm-4">
-        <form asp-action="TakePrice">
             <input asp-for="Id" value="" autofocus />
             <span asp-validation-for="Id" class="text-danger"></span>
             <input type="submit" value="OK" class="btn btn-success" style="display:none" />
 
             @if (Model != null)
-            {
-                <input asp-for="PriceCounter" value="@Model.PriceCounter" />
+            {                
 
                 @for (int i = 0; i < Model.ClothList.Count; i++)
                 {
@@ -22,70 +21,66 @@
                     @Html.HiddenFor(m => m.ClothList[i].Type)
                 }
 
-
             }
-        </form>
-    </div>
-    <div class="col-sm-4">
-        @if (Model != null)
-        {
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>
-                            ID
-                        </th>
-                        <th>
-                            Marka
-                        </th>
-                        <th>
-                            Cena
-                        </th>
-                      
-                        <th>
-                            Rozmiar
-                        </th>
-                        <th>
-                            Typ
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.ClothList)
-                    {
+
+        </div>
+        <div class="col-sm-4">
+            @if (Model != null)
+            {
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
                         <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Id)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Mark)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Price)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Size)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Type)
-                            </td>
-                                                    
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Marka
+                            </th>
+                            <th>
+                                Cena
+                            </th>
+                            <th>
+                                Rozmiar
+                            </th>
+                            <th>
+                                Typ
+                            </th>
                         </tr>
-                    }
-                    <tr>
-                        <td>
-                            
-                        </td>
-                    </tr>
-                </tbody>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ClothList)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Mark)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Price)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Size)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Type)
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td colspan="2" class="table-secondary">Cena:</td>
+                            <td colspan="3" class="table-secondary">
+                                <input asp-for="PriceCounter" value="@Model.PriceCounter" style="background-color:#f3f3f3;text-align:right"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            }
 
-            </table>
-
-        }
-
+        </div>
     </div>
-</div>
-
+</form>
 @using (Html.BeginForm("TakePrice", "Cashier"))
 {
     <button id="close" name="close" value="true" class="btn btn-sm btn-dark"> Zamknij </button>
